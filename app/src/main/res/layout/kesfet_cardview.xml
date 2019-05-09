@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    android:background="#fff"
+    android:layout_margin="10dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="120dp"
+    android:id="@+id/cardview_id"
+    android:layout_height="200dp"
+    cardview:cardCornerRadius="5dp"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        android:background="#fff"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ImageView
+
+            android:src="@drawable/tesbih1"
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3"
+            android:scaleType="fitXY"
+            />
+        <TextView
+
+            android:id="@+id/product_title"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:text="Tesbih Title"
+            android:textColor="#000"
+            android:gravity="center"/>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

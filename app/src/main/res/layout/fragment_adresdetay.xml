@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <LinearLayout
+        android:background="#FFF"
+        android:id="@+id/lin1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include layout="@layout/adres_duzenle_toolbar"/>
+
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="10dp"
+            android:layout_margin="10dp">
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Ülke"
+                android:layout_margin="5dp"/>
+
+            <Spinner
+
+                android:background="@drawable/spinner_background"
+                android:id="@+id/country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:autofillHints="Ülke Seçiniz">
+
+            </Spinner>
+            <TextView
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adres Başlığı"
+                android:layout_margin="5dp"
+                android:textColor="#000"/>
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adres Başlığı(Ev, İş)"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Adres"
+                android:textColor="#000"
+                android:layout_margin="5dp"/>
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Adres Tanımı"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tam İsim"
+                android:textColor="#000"
+                android:layout_margin="5dp"/>
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tam İsim"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Telefon Numarası"
+                android:textColor="#000"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_num"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Telefon Numarası"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Posta Kodu"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_post"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Posta Kodu"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_postcode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="Şehir"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Şehir"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000"
+                android:text="İlçe"
+                android:layout_margin="5dp"/>
+
+            <EditText
+                android:textSize="14sp"
+                android:background="@drawable/edittext_layout"
+                android:id="@+id/et_town"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="İlçe"
+                android:padding="10dp"
+                android:layout_margin="5dp"/>
+            <TextView
+                android:layout_margin="5dp"
+                android:textColor="#FF0000"
+                android:id="@+id/error_town"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <CheckBox
+
+                android:id="@+id/isDefault"
+                android:textColor="#000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Varsayılan Adresim Olarak Kullan"/>
+
+        </LinearLayout>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_margin="5dp"
+            android:text="Kaydet"
+            android:textColor="#FFF"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_shape"/>
+    </LinearLayout>
+    </ScrollView>

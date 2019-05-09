@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+<include layout="@layout/kesfet_toolbar"></include>
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp" />
+<com.yarolegovich.discretescrollview.DiscreteScrollView
+    android:layout_width="match_parent"
+    android:id="@+id/picker"
+    android:layout_height="wrap_content">
+    
+</com.yarolegovich.discretescrollview.DiscreteScrollView>
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
+</LinearLayout>

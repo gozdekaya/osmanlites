@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<LinearLayout
+
+    android:background="#FFF"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+<include layout="@layout/siparis_detay_toolbar"/>
+    <LinearLayout
+
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/grey_line"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sipariş No: 545698"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:layout_margin="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sipariş Tarihi: 25.01.2018"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:layout_margin="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Toplam: 258 TL"
+            android:textSize="14sp"
+            android:textColor="#000"
+            android:layout_margin="10dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/grey_line">
+        <ImageView
+            android:src="@drawable/tesbih1"
+            android:scaleType="fitXY"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="El Yapımı Tesbih"
+            android:layout_margin="10dp"
+            android:textColor="#000"/>
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Özel El yapımı kehribar tesbih."
+                android:layout_margin="10dp" />
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam: 258 TL"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+    </LinearLayout>
+<LinearLayout
+    android:background="@drawable/grey_line"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Teslimat Adresi"
+        android:textColor="@color/colorPrimary"
+        android:textSize="14sp"
+        android:layout_margin="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gözde Kaya"
+        android:layout_margin="10dp"
+        android:textColor="#000"
+        android:textSize="14sp"
+        />
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Güzelyalı mahallesi 765. sokak No:10 Şebnem Sitesi C blok Adana/TURKEY"
+        android:layout_margin="10dp"/>
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="05394794643"
+        android:layout_margin="10dp"/>
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ödeme Bilgileri"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorPrimary"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_visa"
+            android:text="****1670-6 Taksit"
+            android:layout_margin="10dp"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+</ScrollView>

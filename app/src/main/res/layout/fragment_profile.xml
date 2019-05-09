@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <RelativeLayout
+        android:background="@drawable/gradient_gold"
+        android:id="@+id/rel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:padding="5dp"
+            android:layout_margin="10dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/userimage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/tesbih1"
+            app:civ_border_color="#443d1f"
+            app:civ_border_width="1dp" />
+
+        <TextView
+            android:id="@+id/username"
+            android:textColor="#000"
+            android:textStyle="normal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gözde Kaya"
+            android:layout_below="@id/userimage"
+            android:padding="10dp"
+            android:layout_margin="5dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="24sp"/>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:background="#FFF"
+        android:layout_below="@id/rel1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+       <TextView
+           android:background="@drawable/grey_line"
+           android:drawableRight="@drawable/ic_next"
+           android:drawableLeft="@drawable/ic_delivery"
+           android:id="@+id/orders"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:text="   Siparişlerim"
+           android:textSize="16sp"
+           android:padding="10dp"
+           android:textColor="#800020"
+           android:textStyle="normal"
+          />
+        <TextView
+            android:background="@drawable/grey_line"
+            android:drawableRight="@drawable/ic_next"
+            android:drawableLeft="@drawable/ic_placeholders"
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Adreslerim"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textColor="#800020"
+            android:textStyle="normal"
+           />
+        <TextView
+            android:background="@drawable/grey_line"
+            android:drawableRight="@drawable/ic_next"
+           android:drawableLeft="@drawable/ic_payment"
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Kayıtlı Kartlarım"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textColor="#800020"
+            android:textStyle="normal"
+            />
+        <TextView
+
+            android:background="@drawable/grey_line"
+            android:drawableRight="@drawable/ic_next"
+            android:id="@+id/settings"
+             android:drawableLeft="@drawable/ic_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Profil Ayarları"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textStyle="normal"
+            android:textColor="#800020"
+          />
+        <TextView
+            android:background="@drawable/grey_line"
+
+            android:drawableLeft="@drawable/ic_exit"
+            android:id="@+id/logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="   Çıkış Yap"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:textStyle="normal"
+            android:textColor="#800020"
+            />
+
+
+    </LinearLayout>
+</RelativeLayout>

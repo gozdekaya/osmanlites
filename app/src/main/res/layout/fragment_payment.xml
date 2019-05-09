@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+<LinearLayout
+    android:background="#fff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/payment_toolbar"/>
+<LinearLayout
+    android:layout_margin="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+   <TextView
+       android:background="@drawable/grey_line"
+       android:layout_width="0dp"
+       android:layout_weight="3"
+       android:layout_height="wrap_content"
+       android:text="Teslimat Adresi"
+       android:textColor="#800020"
+       android:layout_margin="10dp"
+       android:textSize="16sp"/>
+        <TextView
+            android:id="@+id/editAdr"
+            android:textSize="12sp"
+            android:textColor="#800020"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Ekle/Düzenle"
+            android:layout_margin="10dp"
+            />
+    </LinearLayout>
+   <Spinner
+       android:id="@+id/spinnerAdr"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:background="@drawable/spinner_background"
+       android:popupBackground="#fffced">
+
+   </Spinner>
+    <CheckBox
+        android:id="@+id/check1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Faturamı aynı adrese gönder."
+        android:textColor="#443d1f"/>
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:id="@+id/linFat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:background="@drawable/grey_line"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fatura Adresi"
+            android:textColor="#800020"
+            android:layout_margin="10dp"
+            android:textSize="16sp"/>
+        <Spinner
+            android:id="@+id/spinnerFat"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background"
+            android:popupBackground="#fff">
+
+        </Spinner>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <TextView
+            android:background="@drawable/grey_line"
+            android:layout_width="0dp"
+            android:layout_weight="3"
+            android:layout_height="wrap_content"
+            android:text="Kart Bilgileri"
+            android:textColor="#800020"
+            android:layout_margin="10dp"
+            android:textSize="16sp"/>
+            <TextView
+                android:id="@+id/editCard"
+                android:textSize="12sp"
+                android:textColor="#800020"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Ekle/Düzenle"
+                android:layout_margin="10dp"
+                />
+
+        </LinearLayout>
+        <Spinner
+            android:id="@+id/spinnerCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/spinner_background">
+
+        </Spinner>
+    </LinearLayout>
+<TextView
+    android:id="@+id/show"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:background="@drawable/button_buy"
+    android:text="Devam Et"
+    android:textColor="#fff"
+    android:layout_margin="10dp"
+    android:padding="10dp"/>
+</LinearLayout>
+</ScrollView>

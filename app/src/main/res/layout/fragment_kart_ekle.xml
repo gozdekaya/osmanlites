@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/lin1"
+    android:background="#fffced"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include layout="@layout/kart_ekle_toolbar"/>
+<EditText
+    android:id="@+id/cardname"
+    android:padding="10dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/edittext_layout"
+    android:hint="Kartın Adı"
+    android:textSize="16sp"
+    android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/holdername"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_layout"
+        android:hint="Kartın Üzerindeki İsim"
+        android:textSize="16sp"
+        android:layout_margin="10dp"/>
+    <EditText
+        android:id="@+id/cardnumber"
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edittext_layout"
+        android:hint="Kart Numarası"
+        android:drawableRight="@drawable/kredikart"
+        android:textSize="16sp"
+        android:layout_margin="10dp"/>
+    <TextView
+        android:padding="10dp"
+        android:textColor="#443d1f"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Son Kullanım Tarihi"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/month"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:hint="Ay"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_layout"/>
+        <EditText
+            android:id="@+id/year"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:textAlignment="center"
+            android:hint="Yıl"
+            android:layout_margin="10dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/edittext_layout"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/save"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_shape"
+        android:layout_margin="20dp"
+        android:padding="10dp"
+        android:text="Kaydet"
+        android:textColor="#fffced"/>
+</LinearLayout>

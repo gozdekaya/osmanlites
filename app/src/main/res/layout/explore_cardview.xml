@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/layout"
+    android:background="@drawable/grey_border"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="240dp"
+    android:layout_height="400dp"
+    android:layout_margin="10dp"
+    android:layout_gravity="center"
+    android:orientation="vertical">
+<TextView
+    android:textStyle="bold"
+    android:id="@+id/name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Urun Fiyat"
+    android:layout_gravity="center_horizontal"
+    android:textSize="16sp"
+    android:textColor="#000"
+    android:layout_margin="10dp"/>
+    <ImageView
+        android:padding="5dp"
+        android:id="@+id/image"
+        android:src="@drawable/tesbih1"
+        android:scaleType="fitXY"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:id="@+id/price"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Urun Fyat"
+        android:textSize="16sp"
+        android:textColor="#000"
+        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_tag"/>
+ <LinearLayout
+     android:layout_margin="10dp"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:orientation="horizontal"
+     >
+  <ImageButton
+      android:layout_margin="10dp"
+      android:id="@+id/button_display"
+      android:layout_width="0dp"
+      android:padding="10dp"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:src="@drawable/ara_ic"
+      android:background="@drawable/button_shape"/>
+
+     <ImageButton
+         android:id="@+id/button_buy"
+         android:layout_width="0dp"
+         android:layout_height="wrap_content"
+         android:layout_margin="10dp"
+         android:layout_weight="1"
+         android:background="@drawable/button_buy"
+         android:padding="10dp"
+         android:src="@drawable/ic_add_shopping_cart_black_24dp" />
+
+ </LinearLayout>
+
+
+</LinearLayout>

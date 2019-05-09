@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#B3000000">
+<ImageButton
+    android:id="@+id/close"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:layout_margin="10dp"
+    android:padding="10dp"
+    android:src="@drawable/ic_close_black_24dp"
+    android:background="@null"/>
+    <RelativeLayout
+        android:id="@+id/rel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        >
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:text="OSMANLI TESBİHCİLİK"
+   android:layout_centerInParent="true"
+    android:textSize="30sp"
+    android:textColor="#ffffff"
+    android:textStyle="bold"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/rel1">
+        <Button
+            android:layout_marginBottom="10dp"
+            android:id="@+id/btn_fb"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#3b5998"
+            android:text="Facebook ile Kayıt ol"
+            android:textColor="#ffffff"/>
+        <LinearLayout
+            android:id="@+id/lin1"
+            android:layout_centerInParent="true"
+            android:layout_below="@id/btn_fb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+        <Button
+            android:layout_marginRight="10dp"
+            android:id="@+id/btn_g"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:textColor="#db3236"
+            android:text="Google"/>
+        <Button
+            android:layout_marginLeft="10dp"
+            android:id="@+id/btn_e"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:background="#db3236"
+            android:text="E-Posta"
+            android:textColor="#fff"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_giris"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_below="@id/lin1"
+            android:layout_centerInParent="true"
+            android:text="Giriş Yap"
+            android:textSize="18sp"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:gravity="center_horizontal"
+           />
+    </RelativeLayout>
+</RelativeLayout>
