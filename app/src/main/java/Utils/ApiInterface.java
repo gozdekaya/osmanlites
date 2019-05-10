@@ -177,11 +177,12 @@ public interface ApiInterface {
         @Path("productId") String productId
 );
 
-//SEARCH
+    //SEARCH
+    @FormUrlEncoded
     @POST("search-product")
     Call<SearchResponse> urunara(
             @Header("Accept") String accept,
-            @Field("Keyword") String keyword
+            @Field("keyword") String keyword
     );
 
 

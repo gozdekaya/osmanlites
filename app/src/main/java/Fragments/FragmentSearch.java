@@ -16,7 +16,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.gozde.osmanlitapp.R;
 
@@ -34,7 +36,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentSearch extends Fragment {
-    private ListView recyclerView;
+    private RecyclerView recyclerViews;
+    RecyclerView recyclerView1;
+    SearchAdapter searchAdapter;
+    List<Product> items ;
+    TextView popular,lastviews;
+    ImageButton searchbutton;
     ArrayList<String> names= new ArrayList<>();
     ArrayList<String> images= new ArrayList<>();
     ArrayList<String> names1= new ArrayList<>();
@@ -45,17 +52,45 @@ public class FragmentSearch extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_search,container,false);
-        recyclerView=(ListView) view.findViewById(R.id.search_recyclerview);
+        recyclerViews=(RecyclerView) view.findViewById(R.id.search_recyclerview);
         EditText editText=view.findViewById(R.id.search);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-
-
+        popular=view.findViewById(R.id.popular);
+        lastviews=view.findViewById(R.id.lastviews);
+        LinearLayoutManager manager=new LinearLayoutManager(mContext);
+        recyclerViews.setLayoutManager(manager);
         LinearLayoutManager layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
         RecyclerView recyclerView = view.findViewById(R.id.recycler_kesfet);
         recyclerView.setLayoutManager(layoutManager);
         KesfetAdapter adapter = new KesfetAdapter(images,names);
         recyclerView.setAdapter(adapter);
+        searchbutton=view.findViewById(R.id.searchitem);
+        searchbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String keyword =editText.getText().toString();
+                Call<SearchResponse> call=ApiClient.getInstance(getContext()).getApi().urunara("application/json",keyword);
+                call.enqueue(new Callback<SearchResponse>() {
+                    @Override
+                    public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                        items=response.body().getData();
 
+                        recyclerViews.setVisibility(View.VISIBLE);
+                        recyclerView.setVisibility(View.GONE);
+                        recyclerView1.setVisibility(View.GONE);
+                        popular.setVisibility(View.GONE);
+                        lastviews.setVisibility(View.GONE);
+                        searchAdapter = new SearchAdapter(items);
+                        recyclerViews.setAdapter(searchAdapter);
+                    }
+
+                    @Override
+                    public void onFailure(Call<SearchResponse> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+            }
+        });
         names.add("Kehribar Tesbih");
         images.add("https://s.eticaretbox.com/2043/pictures/KYSTDPQNMT17201716417_Gumus-Nokta-Puskul-Surmeli-Sikma-Kehribar-Tesbih-2.jpg");
         names.add("Kehribar Tesbih");
@@ -76,7 +111,7 @@ public class FragmentSearch extends Fragment {
         images.add("https://s.eticaretbox.com/2043/pictures/KYSTDPQNMT17201716417_Gumus-Nokta-Puskul-Surmeli-Sikma-Kehribar-Tesbih-2.jpg");
 
         LinearLayoutManager layoutManager1 = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
-        RecyclerView recyclerView1 = view.findViewById(R.id.recycler_display);
+        recyclerView1 = view.findViewById(R.id.recycler_display);
         recyclerView1.setLayoutManager(layoutManager1);
         RecentAdapter adapter1 = new RecentAdapter(images,names);
         recyclerView1.setAdapter(adapter1);
@@ -92,7 +127,6 @@ public class FragmentSearch extends Fragment {
         names1.add("Abanoz Tesbih");
         images1.add("https://s.eticaretbox.com/2043/pictures/KYSTDPQNMT17201716417_Gumus-Nokta-Puskul-Surmeli-Sikma-Kehribar-Tesbih-2.jpg");
 
-
         return view;
     }
     @Override
@@ -103,39 +137,5 @@ public class FragmentSearch extends Fragment {
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.searchview_menu,menu);
-        final SearchView searchView=(SearchView)menu.findItem(R.id.action_search).getActionView();
-        SearchManager searchManager=(SearchManager)getActivity().getSystemService(Context.SEARCH_SERVICE);
-        searchView.setSearchableInfo(searchManager.getSearchableInfo(getActivity().getComponentName()));
-        searchView.setSubmitButtonEnabled(true);
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                        Call<SearchResponse> call=ApiClient.getInstance(getContext()).getApi().urunara("application/json",s);
-                        call.enqueue(new Callback<SearchResponse>() {
-                            @Override
-                            public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
-                                List<Product> items = (List<Product>) response.body();
-                                SearchAdapter searchAdapter= new SearchAdapter(getContext(),items);
-                                recyclerView.setAdapter(searchAdapter);
 
-                            }
-
-                            @Override
-                            public void onFailure(Call<SearchResponse> call, Throwable t) {
-                               t.printStackTrace();
-                            }
-                        });
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String s) {
-                return false;
-            }
-        });
-    }
 }
