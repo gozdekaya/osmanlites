@@ -23,7 +23,7 @@
     android:layout_weight="0.8"
     android:layout_alignParentBottom="true"
     app:menu="@menu/bottom_navigation_menu"
-    android:background="@null">
+    android:background="#fff">
 
 </android.support.design.widget.BottomNavigationView>
 

@@ -103,7 +103,7 @@ public class FragmentUrunDetay extends Fragment {
 
                 @Override
                 public void onFailure(Call<UrunDetayResponse> call, Throwable t) {
-
+                 t.printStackTrace();
                 }
 
 
@@ -150,13 +150,17 @@ public class FragmentUrunDetay extends Fragment {
         call.enqueue(new Callback<AddCartResponse>() {
             @Override
             public void onResponse(Call<AddCartResponse> call, Response<AddCartResponse> response) {
-                snackbar = Snackbar.make(layout, "", Snackbar.LENGTH_LONG);
-                View view = snackbar.getView();
-                TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
-                tv.setTextColor(Color.parseColor("#2ecc71"));
-                tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
-                snackbar.setText("Sepete Eklendi");
-                snackbar.show();
+                if (SharedPrefManager.getInstance(getActivity()).isLoggedIn()){ snackbar = Snackbar.make(layout, "", Snackbar.LENGTH_LONG);
+                    View view = snackbar.getView();
+                    TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
+                    tv.setTextColor(Color.parseColor("#2ecc71"));
+                    tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
+                    snackbar.setText("Sepete Eklendi");
+                    snackbar.show();}else {
+                    Toast.makeText(mContext, "Sepete ürün eklemek için giriş yapmalısınız.", Toast.LENGTH_LONG).show();
+
+                }
+
             }
 
             @Override

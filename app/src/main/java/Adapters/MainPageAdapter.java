@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import Fragments.FragmentUrunDetay;
 import Models.Product;
@@ -90,14 +91,18 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
              call.enqueue(new Callback<AddCartResponse>() {
                  @Override
                  public void onResponse(Call<AddCartResponse> call, Response<AddCartResponse> response) {
-
-                         snackbar = Snackbar.make(v,"", Snackbar.LENGTH_LONG);
+                     if (SharedPrefManager.getInstance(context).isLoggedIn()){ snackbar = Snackbar.make(v,"", Snackbar.LENGTH_LONG);
                          View view = snackbar.getView();
                          TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                          tv.setTextColor(Color.parseColor("#2ecc71"));
                          tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
                          snackbar.setText("Sepete Eklendi");
-                         snackbar.show();
+                         snackbar.show();}
+                         else {
+                         Toast.makeText(context,"Sepete ürün eklemek için giriş yapmalısınız",Toast.LENGTH_SHORT).show();
+                     }
+
+
 
 
                  }
