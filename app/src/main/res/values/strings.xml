@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">Osmanlitesbihcilik</string>
+    <string name="facebook_app_id">391580284901016</string>
+    <string name="fb_login_protocol_scheme">fb391580284901016</string>
+    <string name="dil_sec">Dil Seçiniz</string>
+    <string name="dil_degistir">Diliniz Türkçe</string>
+    <string name="ana_sayfa">Ana Sayfa</string>
+    <string name="ara">Ara</string>
+    <string name="sepet">Sepet</string>
+    <string name="kesfet">Keşfet</string>
+    <string name="profil">Profil</string>
 </resources>

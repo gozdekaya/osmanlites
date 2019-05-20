@@ -1,6 +1,8 @@
 package Fragments;
 
+import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -14,8 +16,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
@@ -40,6 +44,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentHome extends Fragment {
+
     RelativeLayout katrel;
     ProgressBar mProgress;
     Data data,dataek;
@@ -63,6 +68,11 @@ public class FragmentHome extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
          View view= inflater.inflate(R.layout.fragment_home,container,false);
+
+
+
+
+
         mProgress = (ProgressBar)view.findViewById(R.id.progressBar1);
         layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
            recyclerView=(RecyclerView)view.findViewById(R.id.katrecycler);

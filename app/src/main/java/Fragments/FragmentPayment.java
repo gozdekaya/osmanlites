@@ -1,5 +1,6 @@
 package Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -40,11 +41,14 @@ public class FragmentPayment extends Fragment {
     Spinner spinnerAdr,spinnerFat,spinnerCard;
     SpinnerAdresAdapter adresAdapter;
     SpinnerCardAdapter cardAdapter;
-    List<Address> adresler;
+    List<Address> adresler ;
+    Context mContext;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_payment,container,false);
+
+
         spinnerAdr=(Spinner)view.findViewById(R.id.spinnerAdr);
         spinnerFat=(Spinner)view.findViewById(R.id.spinnerFat);
         spinnerCard=(Spinner)view.findViewById(R.id.spinnerCard);
@@ -96,8 +100,14 @@ public class FragmentPayment extends Fragment {
             @Override
             public void onResponse(Call<AdresResponse> call, Response<AdresResponse> response) {
                 adresler  =  response.body().getData();
-                adresAdapter=new SpinnerAdresAdapter(getContext(),R.layout.spinner_ui,adresler);
-
+                adresAdapter=new SpinnerAdresAdapter(mContext,R.layout.spinner_ui,adresler);
+                if (adresler.size() == 0){
+                    FragmentDialogAdresEkle fragmentDialogAdresEkle = new FragmentDialogAdresEkle();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("from", "payment");
+                    fragmentDialogAdresEkle.setArguments(bundle);
+                    getFragmentManager().beginTransaction().replace(R.id.container, fragmentDialogAdresEkle).commit();
+                }
                 spinnerAdr.setAdapter(adresAdapter);
                 spinnerFat.setAdapter(adresAdapter);
             }
@@ -113,7 +123,7 @@ public class FragmentPayment extends Fragment {
             @Override
             public void onResponse(Call<CreditCardResponse> call, Response<CreditCardResponse> response) {
                 cards =response.body().getCardDetails();
-                cardAdapter=new SpinnerCardAdapter(getContext(),R.layout.spinner_ui,cards);
+                cardAdapter=new SpinnerCardAdapter(mContext,R.layout.spinner_ui,cards);
                 spinnerCard.setAdapter(cardAdapter);
             }
 
@@ -123,5 +133,11 @@ public class FragmentPayment extends Fragment {
             }
         });
         return view;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        this.mContext = context;
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Osmanlitesbihcilik</string>
+    <string name="facebook_app_id">391580284901016</string>
+    <string name="fb_login_protocol_scheme">fb391580284901016</string>
+    <string name="dil_sec">Select A Language</string>
+    <string name="dil_degistir">Your Language is English</string>
+    <string name="ana_sayfa">Home</string>
+    <string name="ara">Search</string>
+    <string name="sepet">Cart</string>
+    <string name="kesfet">Explore</string>
+    <string name="profil">Profile</string>
+</resources>

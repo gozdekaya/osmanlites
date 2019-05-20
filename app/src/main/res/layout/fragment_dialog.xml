@@ -35,30 +35,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/rel1">
-        <Button
-            android:layout_marginBottom="10dp"
-            android:id="@+id/btn_fb"
-            android:layout_width="300dp"
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:background="#3b5998"
-            android:text="Facebook ile Kayıt ol"
-            android:textColor="#ffffff"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+
+            android:layout_marginBottom="30dp" />
         <LinearLayout
             android:id="@+id/lin1"
             android:layout_centerInParent="true"
-            android:layout_below="@id/btn_fb"
+            android:layout_below="@id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-        <Button
-            android:layout_marginRight="10dp"
-            android:id="@+id/btn_g"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="#fff"
-            android:textColor="#db3236"
-            android:text="Google"/>
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
         <Button
             android:layout_marginLeft="10dp"
             android:id="@+id/btn_e"
