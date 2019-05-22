@@ -17,50 +17,50 @@ import com.gozde.osmanlitapp.R;
 import com.gozde.osmanlitapp.SharedPrefManager;
 
 public class FragmentProfile extends Fragment {
-    TextView siparisler,adresler,ayarlar,cikisyap,card;
+    TextView siparisler, adresler, ayarlar, cikisyap, card;
     Context mContext;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_profile,container,false);
-   ayarlar=(TextView)view.findViewById(R.id.settings);
-   ayarlar.setOnClickListener(new View.OnClickListener() {
-       @Override
-       public void onClick(View v) {
-
-       }
-   });
-        adresler=(TextView)view.findViewById(R.id.address) ;
+        View view = inflater.inflate(R.layout.fragment_profile, container, false);
+        ayarlar = (TextView) view.findViewById(R.id.settings);
+        ayarlar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.container, new FragmentProfilAyar()).addToBackStack(null).commit();
+            }
+        });
+        adresler = (TextView) view.findViewById(R.id.address);
         adresler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-             getFragmentManager().beginTransaction().replace(R.id.container,new FragmentAdresler()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container, new FragmentAdresler()).addToBackStack(null).commit();
             }
         });
-        card=(TextView)view.findViewById(R.id.card);
+        card = (TextView) view.findViewById(R.id.card);
         card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.container,new FragmentCreditCards()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container, new FragmentCreditCards()).addToBackStack(null).commit();
             }
         });
 
-        siparisler=(TextView)view.findViewById(R.id.orders);
+        siparisler = (TextView) view.findViewById(R.id.orders);
         siparisler.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getFragmentManager().beginTransaction().replace(R.id.container,new FragmentSiparisler()).addToBackStack(null).commit();
+                getFragmentManager().beginTransaction().replace(R.id.container, new FragmentSiparisler()).addToBackStack(null).commit();
             }
         });
 
 
-        cikisyap=(TextView)view.findViewById(R.id.logout);
+        cikisyap = (TextView) view.findViewById(R.id.logout);
         cikisyap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                AlertDialog.Builder adb = new AlertDialog.Builder(new ContextThemeWrapper(mContext,R.style.AlertDialogCustom));
+                AlertDialog.Builder adb = new AlertDialog.Builder(new ContextThemeWrapper(mContext, R.style.AlertDialogCustom));
 
                 adb.setTitle(R.string.cikis_yapilsin_mi);
                 adb.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
@@ -77,15 +77,16 @@ public class FragmentProfile extends Fragment {
                 });
                 adb.show();
 
-               // logout();
+                // logout();
             }
         });
 
-      return view;
+        return view;
     }
-    private void logout(){
+
+    private void logout() {
         SharedPrefManager.getInstance(getActivity()).clear();
-        getFragmentManager().beginTransaction().replace(R.id.container,new FragmentHome()).commit();
+        getFragmentManager().beginTransaction().replace(R.id.container, new FragmentHome()).commit();
     }
 
     @Override

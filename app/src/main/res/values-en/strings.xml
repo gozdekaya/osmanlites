@@ -69,5 +69,6 @@
     <string name="yil">Year</string>
     <string name="kart_basariyla_eklendi">Your Card Added Successfully</string>
     <string name="sepet_gormek_icin">Login to see Cart</string>
+    <string name="dil_secin">  \u0020 Change Language</string>
 
 </resources>

@@ -54,7 +54,7 @@ public class FragmentSearch extends Fragment {
         View view=inflater.inflate(R.layout.fragment_search,container,false);
         recyclerViews=(RecyclerView) view.findViewById(R.id.search_recyclerview);
         EditText editText=view.findViewById(R.id.search);
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+       getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         popular=view.findViewById(R.id.popular);
         lastviews=view.findViewById(R.id.lastviews);
         LinearLayoutManager manager=new LinearLayoutManager(mContext);
