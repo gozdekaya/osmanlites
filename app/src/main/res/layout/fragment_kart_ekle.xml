@@ -13,7 +13,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/edittext_layout"
-    android:hint="Kartın Adı"
+    android:hint="@string/kart_adi"
     android:textSize="16sp"
     android:layout_margin="10dp"/>
     <EditText
@@ -22,7 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_layout"
-        android:hint="Kartın Üzerindeki İsim"
+        android:hint="@string/kart_uzeri_isim"
         android:textSize="16sp"
         android:layout_margin="10dp"/>
     <EditText
@@ -31,7 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/edittext_layout"
-        android:hint="Kart Numarası"
+        android:hint="@string/kart_no"
         android:drawableRight="@drawable/kredikart"
         android:textSize="16sp"
         android:layout_margin="10dp"/>
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Son Kullanım Tarihi"
+        android:text="@string/son_kullanma"
         android:textStyle="bold"/>
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,7 +52,7 @@
             android:padding="10dp"
             android:textSize="16sp"
             android:textAlignment="center"
-            android:hint="Ay"
+            android:hint="@string/ay"
             android:layout_margin="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
             android:padding="10dp"
             android:textSize="16sp"
             android:textAlignment="center"
-            android:hint="Yıl"
+            android:hint="@string/yil"
             android:layout_margin="10dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -78,6 +78,6 @@
         android:background="@drawable/button_shape"
         android:layout_margin="20dp"
         android:padding="10dp"
-        android:text="Kaydet"
+        android:text="@string/kaydet"
         android:textColor="#fffced"/>
 </LinearLayout>

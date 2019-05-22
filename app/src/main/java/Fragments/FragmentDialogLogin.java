@@ -119,7 +119,7 @@ public class FragmentDialogLogin extends DialogFragment {
                     if ( response.isSuccessful()){
                         UserToken token = new UserToken(loginResponse.getTokenType(), loginResponse.getExpiresIn(), loginResponse.getAccessToken(), loginResponse.getRefreshToken());
                         SharedPrefManager.getInstance(getContext()).saveToken(token);
-                        Toast.makeText(getContext(), "Başarılı", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.basarili, Toast.LENGTH_SHORT).show();
                         dismiss();
 
                         getFragmentManager().beginTransaction().replace(R.id.container,new FragmentProfile()).commit();

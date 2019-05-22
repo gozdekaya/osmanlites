@@ -232,5 +232,12 @@ public class FragmentDialogSignup extends DialogFragment implements View.OnClick
             }
         });
     }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        googleApiClient.stopAutoManage(getActivity());
+        googleApiClient.disconnect();
+    }
 }
 

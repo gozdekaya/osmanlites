@@ -35,7 +35,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/button_buy"
         android:textColor="#fff"
-        android:text="Yeni Kart Ekle"/>
+        android:text="@string/kart_ekle"/>
     </LinearLayout>
 </ScrollView>
 </LinearLayout>

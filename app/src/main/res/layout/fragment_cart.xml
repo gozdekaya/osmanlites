@@ -30,6 +30,28 @@
     android:layout_height="match_parent">
 
 </android.support.v7.widget.RecyclerView>
+            <TextView
+                android:layout_margin="20dp"
+                android:id="@+id/login_texr"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="@string/sepet_gormek_icin"
+                android:textColor="#800020"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                />
+            <Button
+                android:id="@+id/login_button"
+                android:visibility="invisible"
+                android:layout_margin="10dp"
+                android:text="@string/login"
+                android:background="#800020"
+                android:textColor="#fff"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
 
             <TextView
                 android:visibility="invisible"
@@ -42,7 +64,7 @@
 
                 android:textColor="#800020"
                 android:padding="10dp"
-                android:text="Sepetinizde ürün bulunmamaktadır!"
+                android:text="@string/sepet_urun_yok"
                 android:layout_gravity="center"/>
             <Button
                 android:visibility="invisible"
@@ -51,7 +73,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/button_shape"
                 android:layout_gravity="center_horizontal"
-                android:text="Alışverişe Başla"
+                android:text="@string/alisveris_basla"
                 android:textColor="#fff"
                 android:layout_margin="10dp"
                 android:padding="10dp"/>
@@ -69,7 +91,7 @@
         android:id="@+id/button_payment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Satın Al"
+        android:text="@string/satin_al"
         android:textColor="#fff"
         android:background="#800020"
         android:layout_margin="15dp"/>

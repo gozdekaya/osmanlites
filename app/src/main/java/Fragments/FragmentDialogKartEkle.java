@@ -94,7 +94,7 @@ save.setOnClickListener(new View.OnClickListener() {
                 TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                 tv.setTextColor(Color.parseColor("#2ecc71"));
                 tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
-                snackbar.setText("Kartınız Başarıyla Eklendi");
+                snackbar.setText(R.string.kart_basariyla_eklendi);
                 snackbar.show();
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentCreditCards()).commit();
             }

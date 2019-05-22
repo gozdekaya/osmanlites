@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="Keşfet"
+        android:text="@string/kesfet"
         android:textSize="18sp"
         android:textColor="#000"
         android:textStyle="bold"/>

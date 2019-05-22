@@ -43,7 +43,7 @@
     android:layout_width="0dp"
     android:layout_weight="2"
     android:layout_height="wrap_content"
-    android:text="Adet:"
+    android:text="@string/adet"
     android:textColor="#000"
     android:layout_margin="5dp"
     android:padding="5dp"/>

@@ -233,7 +233,7 @@ public class FragmentDialogAdresEkle extends DialogFragment {
                     TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setTextColor(Color.parseColor("#2ecc71"));
                     tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
-                    snackbar.setText("Adres Başarıyla Eklendi");
+                    snackbar.setText(R.string.adres_eklendi);
                     snackbar.show();
                     getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentAdresler()).commit();
                 }

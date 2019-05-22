@@ -32,13 +32,13 @@ import retrofit2.Response;
 public class FragmentCart extends Fragment {
     Context mContext;
     TextView bosText;
-    TextView totalprice;
+    TextView totalprice,logintext;
     DataSepet items;
     Boolean isConnected = false;
     RecyclerView recyclerView;
     CartAdapter adapter;
     ProgressBar mProgressBar;
-    Button button,startshop;
+    Button button,startshop,login;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,6 +48,15 @@ public class FragmentCart extends Fragment {
         adapter.setUpdIns(()->{
             getUpdatedItems();
         });
+        login=view.findViewById(R.id.login_button);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentDialogSignup dialogSignup = new FragmentDialogSignup();
+                dialogSignup.show(getFragmentManager(),"DialogSignup");
+            }
+        });
+        logintext=view.findViewById(R.id.login_texr);
         startshop=view.findViewById(R.id.startshop);
         bosText = view.findViewById(R.id.bosText);
        recyclerView = view.findViewById(R.id.recycler_sepet);
@@ -96,12 +105,14 @@ public class FragmentCart extends Fragment {
                         }
                         adapter.setItems(items.getCartList());
                         adapter.notifyDataSetChanged();
-                        totalprice.setText("Toplam: "+items.getTotalPrice());
+                        totalprice.setText(R.string.toplam + items.getTotalPrice());
 
                         recyclerView.setAdapter(adapter);
                     } else {
                         button.setVisibility(View.GONE);
-                        Toast.makeText(mContext, "Sepeti görmek için giriş yapmalısınız.", Toast.LENGTH_LONG).show();
+                        login.setVisibility(View.VISIBLE);
+                        logintext.setVisibility(View.VISIBLE);
+                       // Toast.makeText(mContext, R.string.sepet_gormek_icin, Toast.LENGTH_LONG).show();
                     }
 
 
@@ -115,7 +126,7 @@ public class FragmentCart extends Fragment {
                 }
             });
         }else {
-            Toast.makeText(mContext, "Lütfen internet bağlantınızı kontrol edin ", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
     }
 

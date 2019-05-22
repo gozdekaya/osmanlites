@@ -96,10 +96,10 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
                          TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                          tv.setTextColor(Color.parseColor("#2ecc71"));
                          tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
-                         snackbar.setText("Sepete Eklendi");
+                         snackbar.setText(R.string.sepete_eklendi);
                          snackbar.show();}
                          else {
-                         Toast.makeText(context,"Sepete ürün eklemek için giriş yapmalısınız",Toast.LENGTH_SHORT).show();
+                         Toast.makeText(context,R.string.sepete_urun_eklemek_icin,Toast.LENGTH_SHORT).show();
                      }
 
 

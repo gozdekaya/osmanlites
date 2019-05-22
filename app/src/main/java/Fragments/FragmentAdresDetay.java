@@ -138,7 +138,7 @@ public class FragmentAdresDetay extends Fragment {
                 }
             });
         }else {
-            Toast.makeText(mContext, "internet bağlantını kontrol et", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
 
 
@@ -254,7 +254,7 @@ public class FragmentAdresDetay extends Fragment {
                         TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                         tv.setTextColor(Color.parseColor("#2ecc71"));
                         tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
-                        snackbar.setText("Adres Başarıyla Güncellendi");
+                        snackbar.setText(R.string.adres_guncel);
                         snackbar.show();
                         getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentAdresler()).commit();
                     }
@@ -266,7 +266,7 @@ public class FragmentAdresDetay extends Fragment {
                 }
             });
         }else {
-            Toast.makeText(mContext, "internet bağlantını kontrol et", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
     }
 

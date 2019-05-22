@@ -20,21 +20,21 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sipariş No: 545698"
+            android:text="@string/siparis_no"
             android:textSize="14sp"
             android:textColor="#000"
             android:layout_margin="10dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sipariş Tarihi: 25.01.2018"
+            android:text="@string/siparis_tarih"
             android:textSize="14sp"
             android:textColor="#000"
             android:layout_margin="10dp" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Toplam: 258 TL"
+            android:text="@string/toplam"
             android:textSize="14sp"
             android:textColor="#000"
             android:layout_margin="10dp" />
@@ -87,7 +87,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Teslimat Adresi"
+        android:text="@string/teslimat_adres"
         android:textColor="@color/colorPrimary"
         android:textSize="14sp"
         android:layout_margin="10dp"/>
@@ -120,7 +120,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Ödeme Bilgileri"
+            android:text="@string/odeme_bilgileri"
             android:layout_margin="10dp"
             android:textColor="@color/colorPrimary"/>
         <TextView

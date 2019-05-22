@@ -110,7 +110,7 @@ public class FragmentUrunDetay extends Fragment {
             });
 
         }else {
-            Toast.makeText(mContext, "internet bağlantını kontrol et", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
 
         return view;
@@ -155,9 +155,9 @@ public class FragmentUrunDetay extends Fragment {
                     TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                     tv.setTextColor(Color.parseColor("#2ecc71"));
                     tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
-                    snackbar.setText("Sepete Eklendi");
+                    snackbar.setText(R.string.sepete_eklendi);
                     snackbar.show();}else {
-                    Toast.makeText(mContext, "Sepete ürün eklemek için giriş yapmalısınız.", Toast.LENGTH_LONG).show();
+                    Toast.makeText(mContext, R.string.sepete_urun_eklemek_icin, Toast.LENGTH_LONG).show();
 
                 }
 

@@ -35,8 +35,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/rel1">
-
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btnGoogleSignIn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"/>
         <com.facebook.login.widget.LoginButton
+            android:layout_below="@id/btnGoogleSignIn"
             android:id="@+id/login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -51,17 +56,16 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <com.google.android.gms.common.SignInButton
-                android:id="@+id/btnGoogleSignIn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+
+
         <Button
+            android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:id="@+id/btn_e"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="#db3236"
-            android:text="E-Posta"
+            android:text="@string/email"
             android:textColor="#fff"/>
         </LinearLayout>
 
@@ -73,7 +77,7 @@
             android:layout_height="50dp"
             android:layout_below="@id/lin1"
             android:layout_centerInParent="true"
-            android:text="Giriş Yap"
+            android:text="@string/login"
             android:textSize="18sp"
             android:textColor="#fff"
             android:textStyle="bold"

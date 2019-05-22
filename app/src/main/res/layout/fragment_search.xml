@@ -23,7 +23,7 @@
                 android:imeOptions="actionSearch"
                 android:layout_margin="10dp"
                 android:padding="5dp"
-                android:hint="Ara.."
+                android:hint="@string/ara"
                 android:background="@drawable/edittext_layout"/>
             <ImageButton
                 android:id="@+id/searchitem"
@@ -52,7 +52,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="Popüler"
+                android:text="@string/populer"
                 android:textStyle="bold"
                 android:textColor="#000"
                 android:layout_margin="10dp"/>
@@ -72,7 +72,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="Son Görüntülenenler"
+                android:text="@string/son_goruntulenen"
                 android:textColor="#000"
                 android:textStyle="bold"
                 android:layout_margin="10dp"/>

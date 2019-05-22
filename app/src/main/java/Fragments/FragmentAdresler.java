@@ -109,7 +109,7 @@ public class FragmentAdresler extends Fragment {
                 }
             });
         }else {
-            Toast.makeText(mContext, "internet bağlantını kontrol et", Toast.LENGTH_LONG).show();
+            Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
 
 

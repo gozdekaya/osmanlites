@@ -26,7 +26,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:text="Ülke"
+        android:text="@string/ulke"
         android:layout_margin="5dp"/>
 
     <Spinner
@@ -42,7 +42,7 @@
         android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adres Başlığı"
+        android:text="@string/adres_baslik"
         android:layout_margin="5dp"
         android:textColor="#000"/>
     <EditText
@@ -51,7 +51,7 @@
         android:id="@+id/et_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Adres Başlığı(Ev, İş)"
+        android:hint="@string/adres_baslik"
         android:padding="10dp"
         android:layout_margin="5dp"/>
     <TextView
@@ -64,7 +64,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adres"
+        android:text="@string/adres"
         android:textColor="#000"
         android:layout_margin="5dp"/>
     <EditText
@@ -73,7 +73,7 @@
         android:id="@+id/et_desc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Adres Tanımı"
+        android:hint="@string/adres_tanim"
         android:padding="10dp"
         android:layout_margin="5dp"/>
     <TextView
@@ -86,7 +86,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tam İsim"
+        android:text="@string/isim"
         android:textColor="#000"
         android:layout_margin="5dp"/>
 <EditText
@@ -95,7 +95,7 @@
     android:id="@+id/et_name"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:hint="Tam İsim"
+    android:hint="@string/isim"
     android:padding="10dp"
     android:layout_margin="5dp"/>
     <TextView
@@ -108,7 +108,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Telefon Numarası"
+        android:text="@string/telefon"
         android:textColor="#000"
         android:layout_margin="5dp"/>
 
@@ -118,7 +118,7 @@
         android:id="@+id/et_num"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Telefon Numarası"
+        android:hint="@string/telefon"
         android:padding="10dp"
         android:layout_margin="5dp"/>
     <TextView
@@ -133,7 +133,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#000"
-        android:text="Posta Kodu"
+        android:text="@string/posta_kodu"
         android:layout_margin="5dp"/>
 
     <EditText
@@ -142,7 +142,7 @@
         android:id="@+id/et_post"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Posta Kodu"
+        android:hint="@string/posta_kodu"
         android:padding="10dp"
         android:layout_margin="5dp"/>
     <TextView
@@ -157,8 +157,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#443d1f"
-        android:text="Şehir"
+        android:textColor="#000"
+        android:text="@string/sehir"
         android:layout_margin="5dp"/>
 
     <EditText
@@ -167,12 +167,12 @@
         android:id="@+id/et_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Şehir"
+        android:hint="@string/sehir"
         android:padding="10dp"
         android:layout_margin="5dp"/>
     <TextView
         android:layout_margin="5dp"
-        android:textColor="#443d1f"
+        android:textColor="#000"
         android:id="@+id/error_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -180,8 +180,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#443d1f"
-        android:text="İlçe"
+        android:textColor="#000"
+        android:text="@string/ilce"
         android:layout_margin="5dp"/>
 
     <EditText
@@ -190,12 +190,12 @@
         android:id="@+id/et_town"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="İlçe"
+        android:hint="@string/ilce"
         android:padding="10dp"
         android:layout_margin="5dp"/>
     <TextView
         android:layout_margin="5dp"
-        android:textColor="#443d1f"
+        android:textColor="#000"
         android:id="@+id/error_town"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -215,14 +215,14 @@
         android:id="@+id/isDefault"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Varsayılan Adresim Olarak Kullan"/>
+        android:text="@string/varsayilan_adres"/>
 
 </LinearLayout>
         <Button
             android:id="@+id/save"
             android:layout_width="match_parent"
             android:layout_margin="5dp"
-            android:text="Kaydet"
+            android:text="@string/kaydet"
             android:textColor="#fffced"
             android:layout_height="wrap_content"
             android:background="@drawable/button_shape"/>

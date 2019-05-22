@@ -10,7 +10,7 @@
     android:layout_above="@id/lin1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="Giriş Yap"
+    android:text="@string/login"
     android:textColor="#800020"
     android:layout_margin="30sp"
     android:textSize="30sp"/>
@@ -22,7 +22,7 @@
        android:layout_height="wrap_content"
        android:orientation="vertical">
        <EditText
-           android:hint="E-Posta"
+           android:hint="@string/email"
            android:text="ozgurozdemirci@gmail.com"
            android:textColorHint="#800020"
            android:textColor="#800020"
@@ -45,7 +45,7 @@
            android:layout_height="wrap_content"
            android:visibility="gone"/>
        <EditText
-           android:hint="Şifre"
+           android:hint="@string/sifre"
            android:text="123456"
            android:textColorHint="#800020"
            android:textColor="#800020"
@@ -81,6 +81,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/button_shape"
-        android:text="Giriş Yap"
-        android:textColor="#fffced" />
+        android:text="@string/login"
+        android:textColor="#fff" />
 </RelativeLayout>

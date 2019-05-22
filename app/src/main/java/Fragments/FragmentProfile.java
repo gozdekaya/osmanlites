@@ -62,14 +62,14 @@ public class FragmentProfile extends Fragment {
             public void onClick(View v) {
                 AlertDialog.Builder adb = new AlertDialog.Builder(new ContextThemeWrapper(mContext,R.style.AlertDialogCustom));
 
-                adb.setTitle("Çıkış Yapılsın Mı?");
-                adb.setPositiveButton("Tamam", new DialogInterface.OnClickListener() {
+                adb.setTitle(R.string.cikis_yapilsin_mi);
+                adb.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         logout();
                     }
                 });
-                adb.setNegativeButton("İptal", new DialogInterface.OnClickListener() {
+                adb.setNegativeButton(R.string.iptal, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.dismiss();

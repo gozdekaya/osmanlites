@@ -12,10 +12,10 @@
         android:layout_above="@id/lin1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Kayıt Ol"
+        android:text="@string/kayitol"
         android:textColor="#800020"
         android:layout_margin="30sp"
-        android:textSize="30sp"/>
+        android:textSize="28sp"/>
     <LinearLayout
         android:padding="20dp"
         android:id="@+id/lin1"
@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <EditText
-            android:hint="Ad "
+            android:hint="@string/isim"
             android:textColorHint="#800020"
             android:textColor="#800020"
             android:padding="10dp"
@@ -39,7 +39,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"/>
         <EditText
-            android:hint="Soyad"
+            android:hint="@string/soyisim"
             android:textColorHint="#800020"
             android:textColor="#800020"
             android:padding="10dp"
@@ -54,7 +54,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"/>
         <EditText
-            android:hint="E-Posta"
+            android:hint="@string/email"
             android:textColorHint="#800020"
             android:textColor="#800020"
             android:padding="10dp"
@@ -70,7 +70,7 @@
             android:layout_gravity="center_horizontal"/>
 
         <EditText
-            android:hint="Şifre"
+            android:hint="@string/sifre"
             android:textColorHint="#800020"
             android:textColor="#800020"
             android:padding="10dp"
@@ -85,7 +85,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"/>
         <EditText
-            android:hint="Telefon Numarası"
+            android:hint="@string/telefon"
             android:textColorHint="#800020"
             android:textColor="#800020"
             android:padding="10dp"
@@ -100,7 +100,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"/>
         <EditText
-            android:hint="TC Kimlik Numarası"
+            android:hint="@string/kimlik_no"
             android:textColorHint="#800020"
             android:textColor="#800020"
             android:padding="10dp"
@@ -131,6 +131,6 @@
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
         android:background="@drawable/button_buy"
-        android:text="Kayıt Ol"
+        android:text="@string/kayitol"
         android:textColor="#fff" />
 </RelativeLayout>
