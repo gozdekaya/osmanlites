@@ -23,7 +23,7 @@
        android:layout_width="0dp"
        android:layout_weight="3"
        android:layout_height="wrap_content"
-       android:text="Teslimat Adresi"
+       android:text="@string/teslimat_adresi"
        android:textColor="#800020"
        android:layout_margin="10dp"
        android:textSize="16sp"/>
@@ -34,7 +34,7 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="Ekle/Düzenle"
+            android:text="@string/ekle_duzenle"
             android:layout_margin="10dp"
             />
     </LinearLayout>
@@ -50,7 +50,7 @@
         android:id="@+id/check1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Faturamı aynı adrese gönder."
+        android:text="@string/fat_ayni_adres"
         android:textColor="#443d1f"/>
 
 </LinearLayout>
@@ -64,7 +64,7 @@
             android:background="@drawable/grey_line"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Fatura Adresi"
+            android:text="@string/fat_adres"
             android:textColor="#800020"
             android:layout_margin="10dp"
             android:textSize="16sp"/>
@@ -79,11 +79,82 @@
 
     </LinearLayout>
     <LinearLayout
+        android:id="@+id/kart_giris"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/grey_line"
+                android:text="@string/kart_bilgi"
+                android:textColor="#800020"
+                android:layout_margin="10dp"
+                android:textSize="16sp"
+                />
+
+
+        </LinearLayout>
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_layout"
+            android:hint="@string/kart_no"
+            android:layout_margin="10dp"
+            android:padding="10dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/son_kullanma"
+            android:textColor="#000"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <EditText
+                android:hint="@string/ay"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_layout"
+                android:layout_margin="10dp"
+                android:padding="10dp"/>
+            <EditText
+                android:hint="@string/yil"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:background="@drawable/edittext_layout"
+                android:layout_margin="10dp"
+                android:padding="10dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <TextView
+        android:id="@+id/kayit_kart_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kayitli_kart_sec"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#800020"
+        />
+    <LinearLayout
+        android:visibility="invisible"
+       android:id="@+id/kartbilgi"
         android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -92,7 +163,7 @@
             android:layout_width="0dp"
             android:layout_weight="3"
             android:layout_height="wrap_content"
-            android:text="Kart Bilgileri"
+            android:text="@string/kart_bilgi"
             android:textColor="#800020"
             android:layout_margin="10dp"
             android:textSize="16sp"/>
@@ -122,7 +193,7 @@
     android:layout_height="wrap_content"
     android:layout_gravity="right"
     android:background="@drawable/button_buy"
-    android:text="Devam Et"
+    android:text="@string/devam"
     android:textColor="#fff"
     android:layout_margin="10dp"
     android:padding="10dp"/>

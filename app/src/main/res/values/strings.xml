@@ -69,7 +69,14 @@
     <string name="yil">Yıl</string>
     <string name="kart_basariyla_eklendi">Kartınız Başarıyla Eklendi</string>
     <string name="dil_secin">  \u0020 Dil Değiştir</string>
-
+    <string name="guvenli_odeme">Güvenli Ödeme</string>
+    <string name="teslimat_adresi">Teslimat Adresi</string>
+    <string name="ekle_duzenle">Ekle/Düzenle</string>
+    <string name="fat_ayni_adres">Faturamı Aynı Adrese Gönder</string>
+    <string name="fat_adres">Fatura Adresi</string>
+    <string name="devam">Devam Et</string>
+    <string name="kart_bilgi">Kart Bilgileri</string>
+    <string name="kayitli_kart_sec">Kayıtlı Kart Seç</string>
 
 
 </resources>

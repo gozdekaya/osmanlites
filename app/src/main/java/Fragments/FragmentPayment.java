@@ -34,10 +34,11 @@ import retrofit2.Response;
 
 public class FragmentPayment extends Fragment {
     List<cardDetails> cards;
+
     ImageButton back;
-    TextView editAdr,editCard;
+    TextView editAdr,editCard,kayitli_kart;
     CheckBox cb1,cb2,cb3;
-    LinearLayout linearFatura;
+    LinearLayout linearFatura,kartbilgi,kartgiris;
     Spinner spinnerAdr,spinnerFat,spinnerCard;
     SpinnerAdresAdapter adresAdapter;
     SpinnerCardAdapter cardAdapter;
@@ -47,8 +48,17 @@ public class FragmentPayment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_payment,container,false);
+         kartbilgi=view.findViewById(R.id.kartbilgi);
+        kayitli_kart=view.findViewById(R.id.kayit_kart_sec);
+        kartgiris=view.findViewById(R.id.kart_giris);
+        kayitli_kart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                kartbilgi.setVisibility(View.VISIBLE);
+                kartgiris.setVisibility(View.GONE);
 
-
+            }
+        });
         spinnerAdr=(Spinner)view.findViewById(R.id.spinnerAdr);
         spinnerFat=(Spinner)view.findViewById(R.id.spinnerFat);
         spinnerCard=(Spinner)view.findViewById(R.id.spinnerCard);

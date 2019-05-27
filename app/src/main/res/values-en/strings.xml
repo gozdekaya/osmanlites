@@ -70,5 +70,13 @@
     <string name="kart_basariyla_eklendi">Your Card Added Successfully</string>
     <string name="sepet_gormek_icin">Login to see Cart</string>
     <string name="dil_secin">  \u0020 Change Language</string>
+    <string name="guvenli_odeme">Secure Payment</string>
+    <string name="teslimat_adresi">Delivery Address</string>
+    <string name="ekle_duzenle">Add/Edit</string>
+    <string name="fat_ayni_adres">Send My Invoice to Same Address</string>
+    <string name="fat_adres">Invoice Address</string>
+    <string name="devam">Go On</string>
+    <string name="kart_bilgi">Card Information</string>
+    <string name="kayitli_kart_sec">Choose a Registered Card</string>
 
 </resources>
