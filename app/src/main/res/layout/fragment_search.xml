@@ -43,6 +43,16 @@
             android:layout_height="match_parent">
 
         </android.support.v7.widget.RecyclerView>
+        <TextView
+            android:id="@+id/noproduct"
+            android:visibility="invisible"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textSize="18sp"
+            android:text="Aramanıza uygun ürün bulunamadı."
+            android:textColor="#000"
+            android:gravity="center_horizontal"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

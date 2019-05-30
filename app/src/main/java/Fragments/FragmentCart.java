@@ -105,9 +105,10 @@ public class FragmentCart extends Fragment {
                         }
                         adapter.setItems(items.getCartList());
                         adapter.notifyDataSetChanged();
-                        totalprice.setText(R.string.toplam + items.getTotalPrice());
+                        totalprice.setText(items.getTotalPrice());
 
                         recyclerView.setAdapter(adapter);
+
                     } else {
                         button.setVisibility(View.GONE);
                         login.setVisibility(View.VISIBLE);

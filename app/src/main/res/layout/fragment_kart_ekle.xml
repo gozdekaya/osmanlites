@@ -47,28 +47,29 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-        <EditText
-            android:id="@+id/month"
-            android:padding="10dp"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            android:hint="@string/ay"
+        <Spinner
+            android:id="@+id/ay"
             android:layout_margin="10dp"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/edittext_layout"/>
-        <EditText
-            android:id="@+id/year"
             android:padding="10dp"
-            android:textSize="16sp"
-            android:textAlignment="center"
-            android:hint="@string/yil"
-            android:layout_margin="10dp"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:background="@drawable/edittext_layout"/>
+            android:layout_height="40dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/days">
+
+        </Spinner>
+
+        <Spinner
+            android:id="@+id/yil"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="40dp"
+            android:background="@drawable/spinner_background"
+            android:entries="@array/years">
+
+        </Spinner>
     </LinearLayout>
     <Button
         android:id="@+id/save"

@@ -235,7 +235,12 @@ public class FragmentDialogAdresEkle extends DialogFragment {
                     tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
                     snackbar.setText(R.string.adres_eklendi);
                     snackbar.show();
-                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentAdresler()).commit();
+                    if (fromArg == "payment") {
+                        getFragmentManager().beginTransaction().replace(R.id.container, new FragmentPayment()).commit();
+                    } else {
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentAdresler()).commit();
+                    }
+
                 }
 
             }

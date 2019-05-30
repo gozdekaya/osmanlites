@@ -77,6 +77,11 @@
     <string name="devam">Devam Et</string>
     <string name="kart_bilgi">Kart Bilgileri</string>
     <string name="kayitli_kart_sec">Kayıtlı Kart Seç</string>
+    <string name="kart_gir">Kart Bilgilerini Gir</string>
+    <string name="sepet_detay">Sepet Detay</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

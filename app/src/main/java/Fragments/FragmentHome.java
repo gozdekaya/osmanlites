@@ -79,6 +79,7 @@ public class FragmentHome extends Fragment {
             katrel=(RelativeLayout)view.findViewById(R.id.relative_kategori);
             recyclerView1=view.findViewById(R.id.recycler_mainpage);
 
+
             mProgress.setVisibility(View.VISIBLE);
         ApiInterface apiInterface=ApiClient.getInstance(this.mContext).getApi();
         Call<ProductResponse> call =apiInterface.urunler("application/json");
@@ -134,6 +135,12 @@ public class FragmentHome extends Fragment {
                           if (layoutManager1.isViewPartiallyVisible(firstVisibleView, false, false)) {
                               VideoView fv = firstVisibleView.findViewById(R.id.videoView);
                               if (fv != null) fv.pause();
+                          }
+                          if (firstVisibleItemPosition >= 2){
+                              katrel.setVisibility(View.GONE);
+
+                          }else if (firstVisibleItemPosition < 1){
+                              katrel.setVisibility(View.VISIBLE);
                           }
                       }
                       if (lastVisibleView != null){

@@ -1,8 +1,10 @@
 package Adapters;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.gozde.osmanlitapp.R;
 
 import java.util.List;
 
+import Fragments.FragmentUrunDetay;
 import Models.Product;
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder> {
@@ -33,7 +36,22 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull SearchAdapter.ViewHolder viewHolder, int i) {
+        final Product myProduct = items.get(i);
         viewHolder.protv.setText(items.get(i).getTitle());
+        viewHolder.itemView.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        FragmentUrunDetay fragmentUrunDetay=new FragmentUrunDetay();
+                        Bundle args=new Bundle();
+                        String string=myProduct.getId();
+                        args.putString("ID",string);
+                        fragmentUrunDetay.setArguments(args);
+                        AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                        activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentUrunDetay).addToBackStack(null).commit();
+                    }
+                }
+        );
     }
 
     @Override

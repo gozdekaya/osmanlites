@@ -19,6 +19,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class FragmentAdresDetay extends Fragment {
+    ProgressBar mProgressBar;
     Context mContext;
    EditText adresbaslik,desc,name,phone,post,city,town,defaultIs;
     TextView err_name,err_title,err_adres,err_phone,err_post,err_city,err_town;
@@ -66,6 +68,7 @@ public class FragmentAdresDetay extends Fragment {
         View view=inflater.inflate(R.layout.fragment_adresdetay,container,false);
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
        adresbaslik=(EditText) view.findViewById(R.id.et_title);
+        mProgressBar=(ProgressBar)view.findViewById(R.id.progressBar1);
        desc=(EditText) view.findViewById(R.id.et_desc);
        city=(EditText)view.findViewById(R.id.et_city);
        name=(EditText)view.findViewById(R.id.et_name) ;
@@ -98,6 +101,7 @@ public class FragmentAdresDetay extends Fragment {
             }
         });
 
+        mProgressBar.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getInstance(mContext).getApi();
         final String addressid=getArguments().getString("ID",null);
 
@@ -121,6 +125,7 @@ public class FragmentAdresDetay extends Fragment {
                 @Override
                 public void onResponse(Call<AdresDetayResponse> call, Response<AdresDetayResponse> response) {
                     Log.d("adresdetay",response.body().toString());
+                    mProgressBar.setVisibility(View.GONE);
                     Address address = response.body().getData();
                     adresbaslik.setText(address.getTitle());
                     desc.setText(address.getDescription());

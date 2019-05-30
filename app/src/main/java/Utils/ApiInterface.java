@@ -1,5 +1,7 @@
 package Utils;
 
+import com.google.gson.JsonObject;
+
 import Responses.AddCartResponse;
 import Responses.AddCreditCardResponse;
 import Responses.AdresDetayResponse;
@@ -11,11 +13,13 @@ import Responses.CreditCardResponse;
 import Responses.DeleteCartResponse;
 import Responses.KategoriUrunResponse;
 import Responses.LoginResponse;
+import Responses.PayJson;
 import Responses.ProductResponse;
 import Responses.RegisterResponse;
 import Responses.SearchResponse;
 import Responses.UrunDetayResponse;
 import retrofit2.Call;
+import retrofit2.http.Body;
 import retrofit2.http.DELETE;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
@@ -185,5 +189,12 @@ public interface ApiInterface {
             @Field("keyword") String keyword
     );
 
+    @POST("payment")
+    Call<PayJson> postRawJSON(
+    @Header("Authorization") String authorization,
+    @Header("Accept") String accept,
+    @Body JsonObject PaymentJson
+
+    );
 
 }

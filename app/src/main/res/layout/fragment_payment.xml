@@ -14,6 +14,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -101,6 +106,15 @@
 
         </LinearLayout>
         <EditText
+            android:id="@+id/kartholder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_layout"
+            android:hint="@string/kart_uzeri_isim"
+            android:layout_margin="10dp"
+            android:padding="10dp" />
+        <EditText
+            android:id="@+id/kartno"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_layout"
@@ -110,29 +124,46 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
+            android:layout_gravity="left"
             android:text="@string/son_kullanma"
             android:textColor="#000"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <EditText
-                android:hint="@string/ay"
+           <Spinner
+               android:id="@+id/spmonth"
+               android:layout_margin="10dp"
+               android:padding="10dp"
+               android:layout_width="0dp"
+               android:layout_weight="1"
+               android:layout_height="40dp"
+               android:background="@drawable/spinner_background"
+               android:entries="@array/days">
+
+           </Spinner>
+            <Spinner
+                android:id="@+id/spyear"
+                android:layout_margin="10dp"
+                android:padding="10dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edittext_layout"
-                android:layout_margin="10dp"
-                android:padding="10dp"/>
+                android:layout_height="40dp"
+                android:background="@drawable/spinner_background"
+                android:entries="@array/years">
+
+            </Spinner>
             <EditText
-                android:hint="@string/yil"
+                android:id="@+id/cvv"
                 android:layout_width="0dp"
+                android:layout_height="40dp"
                 android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:background="@drawable/edittext_layout"
                 android:layout_margin="10dp"
-                android:padding="10dp"/>
+                android:padding="10dp"
+                android:background="@drawable/edittext_layout"
+                android:hint="CVV"
+
+                android:inputType="number"/>
 
         </LinearLayout>
     </LinearLayout>
@@ -154,6 +185,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <LinearLayout
+            android:id="@+id/kart_spin"
 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -167,16 +199,7 @@
             android:textColor="#800020"
             android:layout_margin="10dp"
             android:textSize="16sp"/>
-            <TextView
-                android:id="@+id/editCard"
-                android:textSize="12sp"
-                android:textColor="#800020"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Ekle/Düzenle"
-                android:layout_margin="10dp"
-                />
+
 
         </LinearLayout>
         <Spinner
@@ -186,12 +209,31 @@
             android:background="@drawable/spinner_background">
 
         </Spinner>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/kart_gir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kart_gir"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="#800020"
+            />
+
     </LinearLayout>
+    <CheckBox
+        android:id="@+id/checkbox2"
+        android:padding="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ön Bilgilendirme Koşulları'nı ve Mesafeli Satış Sözleşmesi'ni okudum,onaylıyorum."/>
 <TextView
     android:id="@+id/show"
-    android:layout_width="wrap_content"
+    android:layout_width="200dp"
     android:layout_height="wrap_content"
-    android:layout_gravity="right"
+    android:gravity="center_horizontal"
+    android:layout_gravity="center_horizontal"
     android:background="@drawable/button_buy"
     android:text="@string/devam"
     android:textColor="#fff"

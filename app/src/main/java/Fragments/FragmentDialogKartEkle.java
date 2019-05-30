@@ -15,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.gozde.osmanlitapp.R;
@@ -30,7 +31,8 @@ public class FragmentDialogKartEkle extends DialogFragment {
     ImageButton backbutton;
     Snackbar snackbar;
     LinearLayout layout;
-    EditText name,holder,number,month,year;
+    EditText name,holder,number;
+    Spinner ay,yil;
     Button save;
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -60,8 +62,8 @@ public class FragmentDialogKartEkle extends DialogFragment {
         name=view.findViewById(R.id.cardname);
         holder=view.findViewById(R.id.holdername);
         number=view.findViewById(R.id.cardnumber);
-        month=view.findViewById(R.id.month);
-        year=view.findViewById(R.id.year);
+        ay=view.findViewById(R.id.ay);
+        yil=view.findViewById(R.id.yil);
         save=view.findViewById(R.id.save);
         layout=view.findViewById(R.id.lin1);
 save.setOnClickListener(new View.OnClickListener() {
@@ -82,8 +84,8 @@ save.setOnClickListener(new View.OnClickListener() {
         String Name = name.getText().toString().trim();
         String Holder=holder.getText().toString().trim();
         String Number=number.getText().toString().trim();
-        String Month=month.getText().toString().trim();
-        String Year=year.getText().toString().trim();
+        String Month = (String) ay.getSelectedItem();
+        String Year=(String) yil.getSelectedItem();
 
         Call<AddCreditCardResponse> call = ApiClient.getInstance(getContext()).getApi().kartekle("Bearer " + SharedPrefManager.getInstance(getContext()).getToken(), "application/json",Name,Holder,Number,Month,Year);
         call.enqueue(new Callback<AddCreditCardResponse>() {

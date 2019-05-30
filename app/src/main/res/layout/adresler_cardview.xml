@@ -25,6 +25,13 @@
             android:textStyle="bold"
             android:padding="5dp"
             />
+        <ImageView
+            android:id="@+id/pin"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_margin="5dp"
+            android:src="@drawable/pin"
+            android:visibility="invisible"/>
 
     </LinearLayout>
    <LinearLayout

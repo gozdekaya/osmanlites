@@ -9,6 +9,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -40,21 +42,23 @@ public class FragmentSearch extends Fragment {
     RecyclerView recyclerView1;
     SearchAdapter searchAdapter;
     List<Product> items ;
-    TextView popular,lastviews;
+    TextView popular,lastviews,noproduct;
     ImageButton searchbutton;
     ArrayList<String> names= new ArrayList<>();
     ArrayList<String> images= new ArrayList<>();
     ArrayList<String> names1= new ArrayList<>();
     ArrayList<String> images1= new ArrayList<>();
     Context mContext;
+    String keyword;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_search,container,false);
+        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
         recyclerViews=(RecyclerView) view.findViewById(R.id.search_recyclerview);
         EditText editText=view.findViewById(R.id.search);
-       getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        noproduct=view.findViewById(R.id.noproduct);
         popular=view.findViewById(R.id.popular);
         lastviews=view.findViewById(R.id.lastviews);
         LinearLayoutManager manager=new LinearLayoutManager(mContext);
@@ -65,30 +69,68 @@ public class FragmentSearch extends Fragment {
         KesfetAdapter adapter = new KesfetAdapter(images,names);
         recyclerView.setAdapter(adapter);
         searchbutton=view.findViewById(R.id.searchitem);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+                 keyword =editText.getText().toString();
+                if (keyword.length()>3){
+                    Call<SearchResponse> call=ApiClient.getInstance(getContext()).getApi().urunara("application/json",keyword);
+                    call.enqueue(new Callback<SearchResponse>() {
+                        @Override
+                        public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
+                            items=response.body().getData();
+                         if (items.size()!=0){
+                             recyclerViews.setVisibility(View.VISIBLE);
+                             recyclerView.setVisibility(View.GONE);
+                             recyclerView1.setVisibility(View.GONE);
+                             popular.setVisibility(View.GONE);
+                             lastviews.setVisibility(View.GONE);
+                             searchAdapter = new SearchAdapter(items);
+                             recyclerViews.setAdapter(searchAdapter);
+
+                         }else {
+                             recyclerViews.setVisibility(View.GONE);
+                             recyclerView.setVisibility(View.GONE);
+                             recyclerView1.setVisibility(View.GONE);
+                             popular.setVisibility(View.GONE);
+                             lastviews.setVisibility(View.GONE);
+                             noproduct.setVisibility(View.VISIBLE);
+                         }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<SearchResponse> call, Throwable t) {
+                            t.printStackTrace();
+                        }
+                    });}else {
+                    noproduct.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            if (keyword.length()==0){
+                recyclerViews.setVisibility(View.GONE);
+                recyclerView.setVisibility(View.VISIBLE);
+                recyclerView1.setVisibility(View.VISIBLE);
+                popular.setVisibility(View.VISIBLE);
+                lastviews.setVisibility(View.VISIBLE);
+
+            }
+            }
+        });
         searchbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String keyword =editText.getText().toString();
-                Call<SearchResponse> call=ApiClient.getInstance(getContext()).getApi().urunara("application/json",keyword);
-                call.enqueue(new Callback<SearchResponse>() {
-                    @Override
-                    public void onResponse(Call<SearchResponse> call, Response<SearchResponse> response) {
-                        items=response.body().getData();
 
-                        recyclerViews.setVisibility(View.VISIBLE);
-                        recyclerView.setVisibility(View.GONE);
-                        recyclerView1.setVisibility(View.GONE);
-                        popular.setVisibility(View.GONE);
-                        lastviews.setVisibility(View.GONE);
-                        searchAdapter = new SearchAdapter(items);
-                        recyclerViews.setAdapter(searchAdapter);
-                    }
-
-                    @Override
-                    public void onFailure(Call<SearchResponse> call, Throwable t) {
-                        t.printStackTrace();
-                    }
-                });
             }
         });
         names.add("Kehribar Tesbih");

@@ -78,5 +78,7 @@
     <string name="devam">Go On</string>
     <string name="kart_bilgi">Card Information</string>
     <string name="kayitli_kart_sec">Choose a Registered Card</string>
+    <string name="kart_gir">Kart Bilgilerini Gir</string>
+    <string name="sepet_detay">Sepet Detay</string>
 
 </resources>

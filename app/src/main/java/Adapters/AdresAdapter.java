@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import Models.Address;
@@ -41,7 +42,9 @@ public class AdresAdapter extends RecyclerView.Adapter<AdresAdapter.ViewHolder> 
         viewHolder.tv_desc.setText(mAdresses.get(i).getDescription());
         viewHolder.tv_ilce.setText(mAdresses.get(i).getTown() +" , " + mAdresses.get(i).getCity()  +" , "+mAdresses.get(i).getCountry().getTitle()  + "  " +mAdresses.get(i).getPostCode());
         viewHolder.tv_telefon.setText(mAdresses.get(i).getPhone());
-
+         if (mAdresses.get(i).getIsDefault()==1){
+             viewHolder.pin.setVisibility(View.VISIBLE);
+         }else viewHolder.pin.setVisibility(View.GONE);
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,8 +73,10 @@ public class AdresAdapter extends RecyclerView.Adapter<AdresAdapter.ViewHolder> 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView tv_title,tv_desc,tv_ilce,tv_telefon;
+        ImageView pin;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            pin=itemView.findViewById(R.id.pin);
             tv_telefon=itemView.findViewById(R.id.telefon);
             tv_ilce=itemView.findViewById(R.id.ilce);
             tv_title=itemView.findViewById(R.id.adres_title);
