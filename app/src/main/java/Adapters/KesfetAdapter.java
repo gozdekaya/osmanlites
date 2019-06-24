@@ -12,14 +12,15 @@ import com.gozde.osmanlitapp.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import Models.Product;
 
 public class KesfetAdapter extends RecyclerView.Adapter<KesfetAdapter.ViewHolder>{
-    ArrayList<String> images;
-    ArrayList<String> names;
+ List<Product> mProducts;
 
-    public KesfetAdapter(ArrayList<String> images, ArrayList<String> names) {
-        this.images = images;
-        this.names = names;
+    public KesfetAdapter(List<Product> mProducts) {
+        this.mProducts = mProducts;
     }
 
     @NonNull
@@ -31,22 +32,24 @@ public class KesfetAdapter extends RecyclerView.Adapter<KesfetAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int i) {
-    viewHolder.name.setText(names.get(i));
-        Picasso.get().load("https://s.eticaretbox.com/2043/pictures/KYSTDPQNMT17201716417_Gumus-Nokta-Puskul-Surmeli-Sikma-Kehribar-Tesbih-2.jpg").into(viewHolder.image);
+    viewHolder.name.setText(mProducts.get(i).getTitle());
+    viewHolder.price.setText(mProducts.get(i).getPrice());
+        Picasso.get().load(mProducts.get(i).getProfile_image()).into(viewHolder.image);
     }
 
     @Override
     public int getItemCount() {
-        return images.size();
+        return mProducts.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
         ImageView image;
-        TextView name;
+        TextView name,price;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            image=(ImageView)itemView.findViewById(R.id.product_image);
-            name=(TextView)itemView.findViewById(R.id.product_title);
+            image=(ImageView)itemView.findViewById(R.id.img);
+            name=(TextView)itemView.findViewById(R.id.name);
+            price=(TextView)itemView.findViewById(R.id.price);
         }
     }
 }

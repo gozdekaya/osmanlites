@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent"
-    android:animateLayoutChanges="true">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="#bbb">
+
 
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -11,25 +14,31 @@
         android:layout_height="match_parent"
         android:background="#fff">
 
+
         <RelativeLayout
+
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <RelativeLayout
-                android:visibility="visible"
                 android:id="@+id/relative_kategori"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                >
+                android:visibility="visible">
+
+                <android.support.v4.widget.Space
+                    android:id="@+id/spacer"
+                    android:layout_width="match_parent"
+                    android:layout_height="25dp" />
 
                 <android.support.v7.widget.RecyclerView
-
                     android:id="@+id/katrecycler"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/grey_line"
+                    android:layout_below="@id/spacer"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="0dp"
+                    android:background="@drawable/grey_line"
                     android:orientation="horizontal">
 
                 </android.support.v7.widget.RecyclerView>
@@ -56,10 +65,10 @@
 
 
         <ProgressBar
-            android:visibility="invisible"
             android:id="@+id/progressBar1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            android:visibility="invisible" />
     </RelativeLayout>
 </RelativeLayout>

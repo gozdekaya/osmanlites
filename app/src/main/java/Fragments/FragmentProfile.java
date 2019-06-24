@@ -11,6 +11,7 @@ import android.view.ContextThemeWrapper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gozde.osmanlitapp.R;
@@ -19,13 +20,20 @@ import com.gozde.osmanlitapp.SharedPrefManager;
 public class FragmentProfile extends Fragment {
     TextView siparisler, adresler, ayarlar, cikisyap, card;
     Context mContext;
-
+    ImageView goback;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
         ayarlar = (TextView) view.findViewById(R.id.settings);
+        goback=(ImageView)view.findViewById(R.id.back);
+        goback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getFragmentManager().beginTransaction().replace(R.id.container,new FragmentAyarlar()).commit();
+            }
+        });
         ayarlar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

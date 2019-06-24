@@ -3,31 +3,31 @@
     <item
         android:id="@+id/home"
         android:icon="@drawable/ic_home"
-        android:title="@string/ana_sayfa">
+     >
 
     </item>
     <item
         android:id="@+id/search"
         android:icon="@drawable/ic_search"
-        android:title="@string/ara">
+      >
 
     </item>
     <item
         android:id="@+id/cart"
         android:icon="@drawable/ic_cart"
-        android:title="@string/sepet">
+        >
 
     </item>
     <item
         android:id="@+id/explore"
         android:icon="@drawable/ic_star_black_24dp"
-        android:title="@string/kesfet">
+        >
 
     </item>
     <item
         android:id="@+id/profile"
         android:icon="@drawable/ic_profile"
-        android:title="@string/profil">
+        >
 
     </item>
 </menu>

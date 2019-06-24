@@ -10,6 +10,8 @@ public class Product {
    String profile_image;
    List<Media> media;
    Pagination pagination;
+   Discount discount;
+   Boolean is_liked;
 
     public String getId() {
         return id;
@@ -65,5 +67,21 @@ public class Product {
 
     public void setPagination(Pagination pagination) {
         this.pagination = pagination;
+    }
+
+    public Discount getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(Discount discount) {
+        this.discount = discount;
+    }
+
+    public Boolean getIs_liked() {
+        return is_liked;
+    }
+
+    public void setIs_liked(Boolean is_liked) {
+        this.is_liked = is_liked;
     }
 }

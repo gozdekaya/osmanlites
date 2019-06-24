@@ -67,7 +67,7 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
      description=myProduct.getDescription();
      halfdescription = description;
      if (description.length() > 10) halfdescription=description.substring(0,6)+"...";
-     viewHolder.desc.setText(halfdescription);
+//     viewHolder.desc.setText(halfdescription);
      viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
@@ -91,7 +91,7 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
              call.enqueue(new Callback<AddCartResponse>() {
                  @Override
                  public void onResponse(Call<AddCartResponse> call, Response<AddCartResponse> response) {
-                     if (SharedPrefManager.getInstance(context).isLoggedIn()){ snackbar = Snackbar.make(v,"", Snackbar.LENGTH_LONG);
+                     if (SharedPrefManager.getInstance(context).isLoggedIn()){ snackbar = Snackbar.make(v,"", Snackbar.LENGTH_SHORT);
                          View view = snackbar.getView();
                          TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                          tv.setTextColor(Color.parseColor("#2ecc71"));
@@ -132,7 +132,7 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
             super(itemView);
             price=itemView.findViewById(R.id.price_item);
             name=itemView.findViewById(R.id.name_item);
-            desc=itemView.findViewById(R.id.desc_item);
+         //   desc=itemView.findViewById(R.id.desc_item);
             rv=itemView.findViewById(R.id.rv_horizontal);
         }
         public void setData(Product selectedProduct,int position){

@@ -41,7 +41,7 @@ public class MediaFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view =inflater.inflate(R.layout.layout_slider,container,false);
+        View view =inflater.inflate(R.layout.layout_likebutton,container,false);
 
         if (type==2){
             videoView=view.findViewById(R.id.video_slide);

@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:text="@string/profil_ayar"
+        android:text="Seçenekler"
         android:textSize="18sp"
         android:textColor="#000"
         android:textStyle="bold"/>

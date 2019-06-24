@@ -4,14 +4,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
-
+    <ImageButton
+        android:id="@+id/close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:src="@drawable/ic_close_black_24dp"
+        android:background="@null"
+        android:layout_margin="20dp"/>
 <TextView
     android:layout_centerHorizontal="true"
     android:layout_above="@id/lin1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/login"
-    android:textColor="#800020"
+    android:textColor="#000"
     android:layout_margin="30sp"
     android:textSize="30sp"/>
    <LinearLayout
@@ -24,8 +31,7 @@
        <EditText
            android:hint="@string/email"
            android:text="ozgurozdemirci@gmail.com"
-           android:textColorHint="#800020"
-           android:textColor="#800020"
+           android:textColor="#000"
            android:padding="10dp"
            android:drawableRight="@drawable/person"
             android:gravity="center"
@@ -47,8 +53,8 @@
        <EditText
            android:hint="@string/sifre"
            android:text="123456"
-           android:textColorHint="#800020"
-           android:textColor="#800020"
+
+           android:textColor="#000"
            android:padding="10dp"
            android:drawableRight="@drawable/pass"
            android:gravity="center"

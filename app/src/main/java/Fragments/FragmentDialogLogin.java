@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +38,7 @@ public class FragmentDialogLogin extends DialogFragment {
     Object returningResult = new Object();
     TextView err_email,err_pass;
     Boolean isConnected = false;
-
+    ImageButton close;
 
     @Override
     public void onCreate(@Nullable final Bundle savedInstanceState) {
@@ -55,7 +56,13 @@ public class FragmentDialogLogin extends DialogFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_login, container, false);
-
+         close=view.findViewById(R.id.close);
+         close.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 dismiss();
+             }
+         });
         editTextEmail = (EditText) view.findViewById(R.id.et_mail);
         editTextPassword = (EditText) view.findViewById(R.id.et_pw);
         buttonLogin = (Button) view.findViewById(R.id.btn_login);
@@ -122,7 +129,7 @@ public class FragmentDialogLogin extends DialogFragment {
                         Toast.makeText(getContext(), R.string.basarili, Toast.LENGTH_SHORT).show();
                         dismiss();
 
-                        getFragmentManager().beginTransaction().replace(R.id.container,new FragmentProfile()).commit();
+                        getFragmentManager().beginTransaction().replace(R.id.container,new FragmentAyarlar()).commit();
 
 
                     }else {

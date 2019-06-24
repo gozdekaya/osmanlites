@@ -24,6 +24,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
 
+import Fragments.FragmentAyarlar;
 import Fragments.FragmentCart;
 import Fragments.FragmentDialogSignup;
 import Fragments.FragmentHome;
@@ -143,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.profile:
                     if (SharedPrefManager.getInstance(MainActivity.this).isLoggedIn()){
-                        getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentProfile()).commit();
+                        getSupportFragmentManager().beginTransaction().replace(R.id.container,new FragmentAyarlar()).commit();
                     }else {
                         FragmentDialogSignup dialogSignup = new FragmentDialogSignup();
                         dialogSignup.show(getSupportFragmentManager(),"DialogSignup");

@@ -42,7 +42,7 @@ DataSepet items;
 Button btnOnay;
 ImageButton backbtn;
 TextView toplam,faturadres,tesadres;
-String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,expmonth,expyear;
+String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,expmonth,expyear,kartlarim;
 
 
     public FragmentSiparisOnizleme() {
@@ -56,6 +56,7 @@ String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,e
                              Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.layout_sepet_onizleme, container, false);
          Bundle bundle=this.getArguments();
+
          fatura=bundle.getString("fatura","yok");
          teslimat=bundle.getString("teslimat","yok");
          teslimatAdresId= bundle.getString("billingAddressId");

@@ -7,17 +7,16 @@
 <include layout="@layout/profil_ayarlar_toolbar"></include>
     <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:background="@drawable/grey_line"
-        android:drawableRight="@drawable/ic_next"
-        android:drawableLeft="@drawable/ic_language"
         android:id="@+id/dil_degistir"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/dil_secin"
-        android:textSize="16sp"
+        android:background="@drawable/grey_line"
+        android:drawableLeft="@drawable/ic_language"
+        android:drawableRight="@drawable/ic_next"
         android:padding="10dp"
-        android:textColor="#800020"
-        android:textStyle="normal"
-        />
+        android:text="@string/dil_secin"
+        android:textColor="#000"
+        android:textSize="14sp"
+        android:textStyle="normal" />
 
 </LinearLayout>

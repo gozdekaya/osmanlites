@@ -32,7 +32,7 @@
         <TextView
             android:id="@+id/display_detay"
             android:gravity="center_horizontal"
-            android:textColor="#800020"
+            android:textColor="#000"
             android:layout_weight="1"
             android:padding="5dp"
             android:layout_width="wrap_content"

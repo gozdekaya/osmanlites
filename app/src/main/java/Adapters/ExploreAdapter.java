@@ -70,13 +70,15 @@ public class ExploreAdapter extends RecyclerView.Adapter<ExploreAdapter.ViewHold
                 call.enqueue(new Callback<AddCartResponse>() {
                     @Override
                     public void onResponse(Call<AddCartResponse> call, Response<AddCartResponse> response) {
-                        if (SharedPrefManager.getInstance(v.getContext()).isLoggedIn()){ snackbar = Snackbar.make( layout,"", Snackbar.LENGTH_LONG);
+                        if (SharedPrefManager.getInstance(v.getContext()).isLoggedIn()){
+                            snackbar = Snackbar.make( layout,"", Snackbar.LENGTH_SHORT);
                             View view = snackbar.getView();
                             TextView tv = (TextView) view.findViewById(android.support.design.R.id.snackbar_text);
                             tv.setTextColor(Color.parseColor("#2ecc71"));
                             tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_done_black_24dp, 0, 0, 0);
                             snackbar.setText(R.string.sepete_eklendi);
-                            snackbar.show();}else {
+                            snackbar.show();
+                        }else {
                             Toast.makeText(v.getContext(), R.string.sepete_urun_eklemek_icin, Toast.LENGTH_LONG).show();
                         }
 

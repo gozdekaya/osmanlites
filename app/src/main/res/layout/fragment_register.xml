@@ -6,14 +6,21 @@
     android:layout_height="match_parent"
     android:background="#fff">
 
-
+<ImageButton
+    android:id="@+id/close"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_alignParentRight="true"
+    android:src="@drawable/ic_close_black_24dp"
+    android:background="@null"
+    android:layout_margin="20dp"/>
     <TextView
         android:layout_centerHorizontal="true"
         android:layout_above="@id/lin1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/kayitol"
-        android:textColor="#800020"
+        android:textColor="#000"
         android:layout_margin="30sp"
         android:textSize="28sp"/>
     <LinearLayout
@@ -25,8 +32,8 @@
         android:orientation="vertical">
         <EditText
             android:hint="@string/isim"
-            android:textColorHint="#800020"
-            android:textColor="#800020"
+
+            android:textColor="#000"
             android:padding="10dp"
             android:drawableRight="@drawable/person"
             android:gravity="center"
@@ -40,8 +47,8 @@
             android:layout_gravity="center_horizontal"/>
         <EditText
             android:hint="@string/soyisim"
-            android:textColorHint="#800020"
-            android:textColor="#800020"
+
+            android:textColor="#000"
             android:padding="10dp"
             android:drawableRight="@drawable/person"
             android:gravity="center"
@@ -55,8 +62,8 @@
             android:layout_gravity="center_horizontal"/>
         <EditText
             android:hint="@string/email"
-            android:textColorHint="#800020"
-            android:textColor="#800020"
+
+            android:textColor="#000"
             android:padding="10dp"
             android:drawableRight="@drawable/mail"
             android:gravity="center"
@@ -71,8 +78,8 @@
 
         <EditText
             android:hint="@string/sifre"
-            android:textColorHint="#800020"
-            android:textColor="#800020"
+
+            android:textColor="#000"
             android:padding="10dp"
             android:drawableRight="@drawable/pass"
             android:gravity="center"
@@ -84,10 +91,27 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"/>
+
+        <EditText
+            android:id="@+id/et_tc"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/edittext_layout"
+            android:drawableRight="@drawable/ic_identity"
+            android:gravity="center"
+            android:hint="@string/kimlik_no"
+            android:padding="10dp"
+            android:textColor="#000"
+           />
+
         <EditText
             android:hint="@string/telefon"
-            android:textColorHint="#800020"
-            android:textColor="#800020"
+
+            android:textColor="#000"
             android:padding="10dp"
             android:drawableRight="@drawable/ic_phone"
             android:gravity="center"
@@ -99,23 +123,6 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_gravity="center_horizontal"/>
-        <EditText
-            android:hint="@string/kimlik_no"
-            android:textColorHint="#800020"
-            android:textColor="#800020"
-            android:padding="10dp"
-            android:drawableRight="@drawable/ic_identity"
-            android:gravity="center"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/edittext_layout"
-            android:id="@+id/et_tc"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_gravity="center_horizontal"/>
-
-
 
 
     </LinearLayout>
@@ -130,7 +137,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"
-        android:background="@drawable/button_buy"
+        android:background="@drawable/button_shape"
         android:text="@string/kayitol"
         android:textColor="#fff" />
 </RelativeLayout>

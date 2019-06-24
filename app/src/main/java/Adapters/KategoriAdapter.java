@@ -41,7 +41,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder,final int i) {
-     viewHolder.kategoriname.setText(mKategoriler.get(i).getTitle());
+//     viewHolder.kategoriname.setText(mKategoriler.get(i).getTitle());
       viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
@@ -74,7 +74,7 @@ public class KategoriAdapter extends RecyclerView.Adapter<KategoriAdapter.ViewHo
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             kategorimage=itemView.findViewById(R.id.katimage);
-            kategoriname=itemView.findViewById(R.id.katitle);
+      //      kategoriname=itemView.findViewById(R.id.katitle);
 
         }
     }

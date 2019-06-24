@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.gozde.osmanlitapp.R;
@@ -25,6 +26,7 @@ import retrofit2.Response;
 public class FragmentDialogRegister extends DialogFragment {
 
     Button signup;
+    ImageButton close;
     EditText name,surname,email,password,phone,tc;
 
     @Override
@@ -46,6 +48,7 @@ public class FragmentDialogRegister extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.fragment_register,container,false);
         name=view.findViewById(R.id.et_uname);
+        close=view.findViewById(R.id.close);
         surname=view.findViewById(R.id.et_usurname);
         email=view.findViewById(R.id.et_mail);
         password=view.findViewById(R.id.et_pw);
@@ -57,6 +60,12 @@ public class FragmentDialogRegister extends DialogFragment {
             public void onClick(View v) {
               userRegister();
 
+            }
+        });
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
             }
         });
         return view;

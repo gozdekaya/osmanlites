@@ -29,13 +29,13 @@
        android:layout_weight="3"
        android:layout_height="wrap_content"
        android:text="@string/teslimat_adresi"
-       android:textColor="#800020"
+       android:textColor="#000"
        android:layout_margin="10dp"
        android:textSize="16sp"/>
         <TextView
             android:id="@+id/editAdr"
             android:textSize="12sp"
-            android:textColor="#800020"
+            android:textColor="#000"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/fat_adres"
-            android:textColor="#800020"
+            android:textColor="#000"
             android:layout_margin="10dp"
             android:textSize="16sp"/>
         <Spinner
@@ -98,7 +98,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/grey_line"
                 android:text="@string/kart_bilgi"
-                android:textColor="#800020"
+                android:textColor="#000"
                 android:layout_margin="10dp"
                 android:textSize="16sp"
                 />
@@ -175,7 +175,7 @@
         android:layout_margin="10dp"
         android:padding="10dp"
         android:layout_gravity="center_horizontal"
-        android:textColor="#800020"
+        android:textColor="#000"
         />
     <LinearLayout
         android:visibility="invisible"
@@ -196,7 +196,7 @@
             android:layout_weight="3"
             android:layout_height="wrap_content"
             android:text="@string/kart_bilgi"
-            android:textColor="#800020"
+            android:textColor="#000"
             android:layout_margin="10dp"
             android:textSize="16sp"/>
 
@@ -218,7 +218,7 @@
             android:layout_margin="10dp"
             android:padding="10dp"
             android:layout_gravity="center_horizontal"
-            android:textColor="#800020"
+            android:textColor="#000"
             />
 
     </LinearLayout>
@@ -234,7 +234,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:layout_gravity="center_horizontal"
-    android:background="@drawable/button_buy"
+    android:background="@drawable/button_shape"
     android:text="@string/devam"
     android:textColor="#fff"
     android:layout_margin="10dp"

@@ -1,6 +1,7 @@
 package Fragments;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -10,15 +11,20 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.gozde.osmanlitapp.R;
 import com.gozde.osmanlitapp.SharedPrefManager;
@@ -37,7 +43,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class FragmentUrunDetay extends Fragment {
+
      TextView product_title,product_desc,product_price,addcart;
     ViewPager viewPager;
     SliderAdapter adapter;
@@ -47,6 +56,8 @@ public class FragmentUrunDetay extends Fragment {
     List<Media>images;
     Boolean isConnected = false;
    Context mContext;
+   CheckBox cbfav;
+   Boolean isFavorite;
    Cart mCart;
     LinearLayout layout;
     private Snackbar snackbar;
@@ -55,6 +66,12 @@ public class FragmentUrunDetay extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View view= inflater.inflate(R.layout.product_details,container,false);
+
+
+
+
+
+
         viewPager=(ViewPager)view.findViewById(R.id.slide_view);
         mProgressBar=(ProgressBar)view.findViewById(R.id.progressBar1);
         layout=(LinearLayout)view.findViewById(R.id.lin1);
@@ -64,6 +81,11 @@ public class FragmentUrunDetay extends Fragment {
         product_title=(TextView)view.findViewById(R.id.product_name);
         product_desc=(TextView)view.findViewById(R.id.aciklama_urun);
         backbutton=(ImageButton)view.findViewById(R.id.back);
+        cbfav=(CheckBox)view.findViewById(R.id.checkBox);
+
+
+
+
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,13 +108,16 @@ public class FragmentUrunDetay extends Fragment {
         mProgressBar.setVisibility(View.VISIBLE);
         ApiInterface apiInterface = ApiClient.getInstance(mContext).getApi();
 
-        if (isConnected){
-            Call<UrunDetayResponse> call=apiInterface.urundetay("application/json", id);
+        if (SharedPrefManager.getInstance(mContext).isLoggedIn() ){
+            String bearer= SharedPrefManager.getInstance(getContext()).getToken();
+            Call<UrunDetayResponse> call=apiInterface.urundetaylogin("Bearer " +bearer,"application/json",id);
             call.enqueue(new Callback<UrunDetayResponse>() {
                 @Override
                 public void onResponse(Call<UrunDetayResponse> call, Response<UrunDetayResponse> response) {
 
                     Product product = response.body().getData();
+
+
                     mProgressBar.setVisibility(View.GONE);
                     product_price.setText(product.getPrice());
                     product_title.setText(product.getTitle());
@@ -110,7 +135,25 @@ public class FragmentUrunDetay extends Fragment {
             });
 
         }else {
-            Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
+            Call<UrunDetayResponse> call=apiInterface.urundetay("application/json",id) ;
+            call.enqueue(new Callback<UrunDetayResponse>() {
+                @Override
+                public void onResponse(Call<UrunDetayResponse> call, Response<UrunDetayResponse> response) {
+                    Product product = response.body().getData();
+                    mProgressBar.setVisibility(View.GONE);
+                    product_price.setText(product.getPrice());
+                    product_title.setText(product.getTitle());
+                    product_desc.setText(product.getDescription());
+                    images = product.getMedia();
+                    viewPager.setAdapter(new SliderAdapter(getFragmentManager(), images));
+                }
+
+                @Override
+                public void onFailure(Call<UrunDetayResponse> call, Throwable t) {
+                  t.printStackTrace();
+                }
+            });
+            //Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
 
         return view;

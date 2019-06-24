@@ -50,8 +50,10 @@ public class FragmentPayment extends Fragment {
     SpinnerAdresAdapter adresAdapter;
     SpinnerCardAdapter cardAdapter;
     List<Address> adresler ;
+    List<Card> card;
     Context mContext;
     String fat;
+    Boolean isRegisteredCard = false;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -66,22 +68,30 @@ public class FragmentPayment extends Fragment {
                  if (cb2.isChecked() && cvv.getText().length() == 3 && cardno.getText().length() == 16){
                      int a =spinnerFat.getSelectedItemPosition();
                      int b =spinnerAdr.getSelectedItemPosition();
+                     int x =spinnerCard.getSelectedItemPosition();
                      String c= spinnerExMonth.getSelectedItem().toString();
                      String d =spinnerExYear.getSelectedItem().toString();
                      String fatura;
                      String teslimat;
+                     String kartlar;
                      Fragment fragmentonizleme =new FragmentSiparisOnizleme();
                      Bundle bundle = new Bundle();
 
-                     bundle.putString("holderName",holder.getText().toString());
-                     bundle.putString("number",cardno.getText().toString());
-                     bundle.putString("cvc",cvv.getText().toString());
-                     bundle.putString("expireMonth",c);
-                     bundle.putString("expireYear", d);
+                     if (isRegisteredCard){
 
+                     } else {
+                         bundle.putString("holderName",holder.getText().toString());
+                         bundle.putString("number",cardno.getText().toString());
+                         bundle.putString("cvc",cvv.getText().toString());
+                         bundle.putString("expireMonth",c);
+                         bundle.putString("expireYear", d);
+                     }
+
+                     kartlar=cards.get(x).getCardAlias() + " " + cards.get(x).getBinNumber() + " " + cards.get(x).getCardToken();
                      fatura =adresler.get(a).getName() + "-" +  adresler.get(a).getDescription() + " " +  adresler.get(a).getTown() + "/" +  adresler.get(a).getCity() + "/" +  adresler.get(a).getCountry().getTitle();
                      teslimat =  adresler.get(b).getName() + "-" +  adresler.get(b).getDescription() + " " +  adresler.get(b).getTown() + "/" +  adresler.get(b).getCity() + "/" +  adresler.get(b).getCountry().getTitle();
                      bundle.putString("fatura", fatura);
+                     bundle.putString("kart",kartlar);
                      bundle.putString("teslimat",teslimat);
                      bundle.putString("shippingAddressId", adresler.get(b).getId().toString());
                      bundle.putString("billingAddressId", adresler.get(a).getId().toString());
@@ -104,6 +114,7 @@ public class FragmentPayment extends Fragment {
         kayitli_kart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isRegisteredCard = true;
                 kartbilgi.setVisibility(View.VISIBLE);
                 kartgiris.setVisibility(View.GONE);
                 kart_gir.setVisibility(View.VISIBLE);
@@ -114,6 +125,7 @@ public class FragmentPayment extends Fragment {
         kartbilgi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                isRegisteredCard = false;
                 kartbilgi.setVisibility(View.GONE);
                 kartgiris.setVisibility(View.VISIBLE);
                 kart_gir.setVisibility(View.GONE);

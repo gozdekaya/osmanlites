@@ -23,7 +23,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <TextView
+                android:id="@+id/total"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:padding="10dp"
+                android:textColor="#000"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_sepet"
@@ -31,15 +39,7 @@
                 android:layout_height="match_parent">
 
             </android.support.v7.widget.RecyclerView>
-            <TextView
-                android:id="@+id/total"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                android:textColor="#800020"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/login_texr"
                 android:layout_width="wrap_content"
@@ -47,7 +47,7 @@
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="20dp"
                 android:text="@string/sepet_gormek_icin"
-                android:textColor="#800020"
+                android:textColor="#000"
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:visibility="invisible" />
@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_margin="10dp"
-                android:background="#800020"
+                android:background="@color/blue"
                 android:text="@string/login"
                 android:textColor="#fff"
                 android:visibility="invisible" />
@@ -72,7 +72,7 @@
                 android:padding="10dp"
                 android:text="@string/sepet_urun_yok"
 
-                android:textColor="#800020"
+                android:textColor="#000"
                 android:textSize="22sp"
                 android:textStyle="bold"
                 android:visibility="invisible" />
@@ -107,7 +107,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
 
-        android:background="#800020"
+        android:background="@color/green"
         android:text="@string/satin_al"
         android:textColor="#fff" />
 </LinearLayout>

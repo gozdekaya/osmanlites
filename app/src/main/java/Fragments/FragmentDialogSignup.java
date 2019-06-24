@@ -29,6 +29,7 @@ import com.facebook.FacebookException;
 import com.facebook.GraphRequest;
 import com.facebook.GraphRequestAsyncTask;
 import com.facebook.GraphResponse;
+import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -41,8 +42,10 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.gson.JsonObject;
 import com.gozde.osmanlitapp.R;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.MessageDigest;
@@ -96,7 +99,7 @@ public class FragmentDialogSignup extends DialogFragment implements View.OnClick
         callbackManager = CallbackManager.Factory.create();
         loginButton = (LoginButton) view.findViewById(R.id.login_button);
         loginButton.setOnClickListener(this);
-        loginButton.setReadPermissions(Arrays.asList(EMAIL));
+        loginButton.setReadPermissions(Arrays.asList("public_profile",EMAIL));
 
         loginButton.setFragment(this);
 
@@ -107,9 +110,9 @@ public class FragmentDialogSignup extends DialogFragment implements View.OnClick
                 GraphRequestAsyncTask request = GraphRequest.newMeRequest(accessToken, new GraphRequest.GraphJSONObjectCallback() {
                     @Override
                     public void onCompleted(JSONObject object, GraphResponse response) {
-                      //  LoginManager.getInstance().logOut();
+                        //  LoginManager.getInstance().logOut();
 
-                       LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile"));
+                        LoginManager.getInstance().logInWithReadPermissions(getActivity(), Arrays.asList("public_profile",EMAIL));
 
                     }
                 }).executeAsync();

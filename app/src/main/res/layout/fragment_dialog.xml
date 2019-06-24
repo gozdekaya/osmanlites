@@ -35,24 +35,32 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/rel1">
-        <com.google.android.gms.common.SignInButton
-            android:id="@+id/btnGoogleSignIn"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
+            android:id="@+id/lin4"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"/>
-        <com.facebook.login.widget.LoginButton
-            android:layout_below="@id/btnGoogleSignIn"
-            android:id="@+id/login_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="30dp"
+            android:orientation="horizontal">
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/btnGoogleSignIn"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                />
+            <com.facebook.login.widget.LoginButton
 
-            android:layout_marginBottom="30dp" />
+                android:id="@+id/login_button"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+           />
+        </LinearLayout>
+
         <LinearLayout
             android:id="@+id/lin1"
             android:layout_centerInParent="true"
-            android:layout_below="@id/login_button"
+            android:layout_below="@id/lin4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -61,6 +69,7 @@
         <Button
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
             android:id="@+id/btn_e"
             android:layout_width="150dp"
             android:layout_height="wrap_content"

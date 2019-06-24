@@ -11,6 +11,7 @@ import Responses.CategorieResponse;
 import Responses.CountryResponse;
 import Responses.CreditCardResponse;
 import Responses.DeleteCartResponse;
+import Responses.DisProductResponse;
 import Responses.KategoriUrunResponse;
 import Responses.LoginResponse;
 import Responses.PayJson;
@@ -135,6 +136,12 @@ public interface ApiInterface {
         @Header("Accept") String accept,
         @Path("productId") String productId
 );
+@GET("products/{productId}")
+Call<UrunDetayResponse>urundetaylogin(
+        @Header("Authorization") String authorization,
+        @Header("Accept") String accept,
+        @Path("productId") String productId
+);
 
 //Sepet
 
@@ -197,4 +204,14 @@ public interface ApiInterface {
 
     );
 
+    //popular urun
+    @GET("popular-products")
+    Call<ProductResponse> populerurunler(
+            @Header("Accept") String accept
+    );
+
+    @GET("discounted-products")
+    Call<ProductResponse> indurun(
+            @Header("Accept") String accept
+    );
 }

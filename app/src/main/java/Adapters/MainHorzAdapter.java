@@ -32,7 +32,7 @@ public class MainHorzAdapter extends RecyclerView.Adapter<MainHorzAdapter.ViewHo
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.mainpage_cardview_horizontal, viewGroup, false);
+        View view = inflater.inflate(R.layout.layout_likebuttonmainpage, viewGroup, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
