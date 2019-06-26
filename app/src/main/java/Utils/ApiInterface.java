@@ -142,6 +142,12 @@ Call<UrunDetayResponse>urundetaylogin(
         @Header("Accept") String accept,
         @Path("productId") String productId
 );
+    @GET("products")
+    Call<ProductResponse>urunlogin(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept
+
+    );
 
 //Sepet
 

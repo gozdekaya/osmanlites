@@ -23,12 +23,24 @@ android:orientation="vertical"
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <include layout="@layout/urundetay_toolbar"/>
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
         <android.support.v4.view.ViewPager
+            android:id="@+id/slide_view"
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            android:id="@+id/slide_view">
+            android:layout_height="300dp">
 
         </android.support.v4.view.ViewPager>
+    <CheckBox
+        android:id="@+id/checkBox1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="15dp"
+        android:button="@drawable/favorites" />
+
+</RelativeLayout>
         <ProgressBar
             android:id="@+id/progressBar1"
             android:layout_width="match_parent"

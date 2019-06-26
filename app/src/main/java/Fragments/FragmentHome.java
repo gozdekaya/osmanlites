@@ -17,6 +17,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -38,13 +40,14 @@ import Models.Categorie;
 import Models.Product;
 
 import com.gozde.osmanlitapp.R;
+import com.gozde.osmanlitapp.SharedPrefManager;
 ;
 import java.net.InetAddress;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FragmentHome extends Fragment {
-
+    CheckBox cbfav;
     RelativeLayout katrel;
     ProgressBar mProgress;
     Data data,dataek;
@@ -72,7 +75,6 @@ public class FragmentHome extends Fragment {
 
 
 
-
         mProgress = (ProgressBar)view.findViewById(R.id.progressBar1);
         layoutManager = new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false);
            recyclerView=(RecyclerView)view.findViewById(R.id.katrecycler);
@@ -82,26 +84,53 @@ public class FragmentHome extends Fragment {
 
             mProgress.setVisibility(View.VISIBLE);
         ApiInterface apiInterface=ApiClient.getInstance(this.mContext).getApi();
-        Call<ProductResponse> call =apiInterface.urunler("application/json");
-        call.enqueue(new Callback<ProductResponse>() {
-            @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
-                data=response.body().getData();
-                nextPage=(String) response.body().getData().getPagination().getNext_page_url();
+        String bearer= SharedPrefManager.getInstance(getContext()).getToken();
+        if (SharedPrefManager.getInstance(mContext).isLoggedIn()){
+            Call<ProductResponse> call =apiInterface.urunlogin("Bearer " +bearer,"application/json");
+            call.enqueue(new Callback<ProductResponse>() {
+                @Override
+                public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                    data=response.body().getData();
 
-                adapter=new MainPageAdapter(data.getProducts(),mContext);
-                recyclerView1.setAdapter(adapter);
-                recyclerView1.setHasFixedSize(true);
-                recyclerView1.setItemViewCacheSize(15);
-                mProgress.setVisibility(View.GONE);
 
-            }
+                    nextPage=(String) response.body().getData().getPagination().getNext_page_url();
 
-            @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
+                    adapter=new MainPageAdapter(data.getProducts(),mContext);
+                    recyclerView1.setAdapter(adapter);
+                    recyclerView1.setHasFixedSize(true);
+                    recyclerView1.setItemViewCacheSize(15);
+                    mProgress.setVisibility(View.GONE);
+
+                }
+
+                @Override
+                public void onFailure(Call<ProductResponse> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });}else {
+            Call<ProductResponse>call1=apiInterface.urunler("application/json");
+            call1.enqueue(new Callback<ProductResponse>() {
+                @Override
+                public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                    data=response.body().getData();
+
+
+                    nextPage=(String) response.body().getData().getPagination().getNext_page_url();
+
+                    adapter=new MainPageAdapter(data.getProducts(),mContext);
+                    recyclerView1.setAdapter(adapter);
+                    recyclerView1.setHasFixedSize(true);
+                    recyclerView1.setItemViewCacheSize(15);
+                    mProgress.setVisibility(View.GONE);
+                }
+
+                @Override
+                public void onFailure(Call<ProductResponse> call, Throwable t) {
+                   t.printStackTrace();
+                }
+            });
+        }
+
 
               final LinearLayoutManager layoutManager1 = new LinearLayoutManager(mContext);
               layoutManager1.setOrientation(LinearLayoutManager.VERTICAL);

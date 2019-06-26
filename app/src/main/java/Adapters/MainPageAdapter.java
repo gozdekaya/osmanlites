@@ -13,6 +13,8 @@ import android.support.v7.widget.SnapHelper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -61,6 +63,23 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
     @Override
     public void onBindViewHolder(@NonNull final MainPageAdapter.ViewHolder viewHolder, int i) {
      final Product myProduct = productList.get(i);
+
+       viewHolder. cbfav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked){
+                    buttonView.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+                }else {
+                    buttonView.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+                }
+            }
+        });
+        if (myProduct.getIs_liked()){
+            viewHolder.cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+            viewHolder.cbfav.setChecked(true);
+        }else {
+            viewHolder.cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+        }
      viewHolder.setData(myProduct,i);
      viewHolder.name.setText(myProduct.getTitle());
      viewHolder.price.setText(myProduct.getPrice());
@@ -127,9 +146,11 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
 
     public class ViewHolder extends RecyclerView.ViewHolder {
        TextView price,name,desc;
+       CheckBox cbfav;
         public ViewHolder(@NonNull View itemView) {
 
             super(itemView);
+            cbfav=itemView.findViewById(R.id.checkBox);
             price=itemView.findViewById(R.id.price_item);
             name=itemView.findViewById(R.id.name_item);
          //   desc=itemView.findViewById(R.id.desc_item);

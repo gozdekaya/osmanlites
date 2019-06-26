@@ -81,9 +81,19 @@ public class FragmentUrunDetay extends Fragment {
         product_title=(TextView)view.findViewById(R.id.product_name);
         product_desc=(TextView)view.findViewById(R.id.aciklama_urun);
         backbutton=(ImageButton)view.findViewById(R.id.back);
-        cbfav=(CheckBox)view.findViewById(R.id.checkBox);
 
+        cbfav=(CheckBox)view.findViewById(R.id.checkBox1);
 
+ cbfav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+     @Override
+     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+         if (isChecked){
+             buttonView.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+         }else {
+             buttonView.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+         }
+     }
+ });
 
 
         backbutton.setOnClickListener(new View.OnClickListener() {
@@ -117,7 +127,12 @@ public class FragmentUrunDetay extends Fragment {
 
                     Product product = response.body().getData();
 
-
+                  if (product.getIs_liked()){
+                        cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+                        cbfav.setChecked(true);
+                    }else {
+                        cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+                    }
                     mProgressBar.setVisibility(View.GONE);
                     product_price.setText(product.getPrice());
                     product_title.setText(product.getTitle());
@@ -140,6 +155,8 @@ public class FragmentUrunDetay extends Fragment {
                 @Override
                 public void onResponse(Call<UrunDetayResponse> call, Response<UrunDetayResponse> response) {
                     Product product = response.body().getData();
+
+
                     mProgressBar.setVisibility(View.GONE);
                     product_price.setText(product.getPrice());
                     product_title.setText(product.getTitle());

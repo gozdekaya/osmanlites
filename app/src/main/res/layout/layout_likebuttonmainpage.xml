@@ -10,12 +10,4 @@
     <include layout="@layout/mainpage_cardview_horizontal"/>
 
 
-    <CheckBox
-        android:padding="10dp"
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:layout_marginLeft="315dp"
-        android:button="@drawable/favorites" />
 </android.support.design.widget.CoordinatorLayout>
