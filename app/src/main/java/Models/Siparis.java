@@ -1,57 +1,67 @@
 package Models;
 
+import java.util.List;
+
 public class Siparis {
-    String tarih;
-    String tutar;
-    int id;
-    String adres;
-    String urun;
 
-    public Siparis(String tarih, String tutar, int id, String adres, String urun) {
-        this.tarih = tarih;
-        this.tutar = tutar;
-        this.id = id;
-        this.adres = adres;
-        this.urun = urun;
-    }
 
-    public String getTarih() {
-        return tarih;
-    }
+    private String id,orderNumber,totalPrice,date;
+    private List<Item> items = null;
+     private Address shippingAddress,billingAddress;
 
-    public void setTarih(String tarih) {
-        this.tarih = tarih;
-    }
-
-    public String getTutar() {
-        return tutar;
-    }
-
-    public void setTutar(String tutar) {
-        this.tutar = tutar;
-    }
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getAdres() {
-        return adres;
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setAdres(String adres) {
-        this.adres = adres;
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
-    public String getUrun() {
-        return urun;
+    public String getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setUrun(String urun) {
-        this.urun = urun;
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public List<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(List<Item> items) {
+        this.items = items;
+    }
+
+    public Address getShippingAddress() {
+        return shippingAddress;
+    }
+
+    public void setShippingAddress(Address shippingAddress) {
+        this.shippingAddress = shippingAddress;
+    }
+
+    public Address getBillingAddress() {
+        return billingAddress;
+    }
+
+    public void setBillingAddress(Address billingAddress) {
+        this.billingAddress = billingAddress;
     }
 }

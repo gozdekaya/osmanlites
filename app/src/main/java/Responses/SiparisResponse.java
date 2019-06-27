@@ -1,22 +1,24 @@
 package Responses;
 
+import android.content.ClipData;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-import Models.cardDetails;
+import Models.Item;
+import Models.Siparis;
 
-public class CreditCardResponse {
+public class SiparisResponse {
 
 
     @SerializedName("status")
     @Expose
     private String status;
-
     @SerializedName("data")
     @Expose
-    private List<cardDetails> cardDetails ;
+    private List<Siparis> data;
 
     public String getStatus() {
         return status;
@@ -26,11 +28,11 @@ public class CreditCardResponse {
         this.status = status;
     }
 
-    public List<cardDetails> getCardDetails() {
-        return cardDetails;
+    public List<Siparis> getData() {
+        return data;
     }
 
-    public void setCardDetails(List<cardDetails> cardDetails) {
-        this.cardDetails = cardDetails;
+    public void setData(List<Siparis> data) {
+        this.data = data;
     }
 }

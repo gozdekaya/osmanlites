@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -36,6 +37,7 @@ import Models.Cart;
 import Models.Media;
 import Models.Product;
 import Responses.AddCartResponse;
+import Responses.LikeResponse;
 import Responses.UrunDetayResponse;
 import Utils.ApiClient;
 import Utils.ApiInterface;
@@ -60,8 +62,9 @@ public class FragmentUrunDetay extends Fragment {
    Boolean isFavorite;
    Cart mCart;
     LinearLayout layout;
+    FragmentManager fragmentManager;
     private Snackbar snackbar;
-
+    Product product;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -87,10 +90,42 @@ public class FragmentUrunDetay extends Fragment {
  cbfav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
      @Override
      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-         if (isChecked){
-             buttonView.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+         String bearer= SharedPrefManager.getInstance(mContext).getToken();
+         String id = product.getId();
+         if(SharedPrefManager.getInstance(mContext).isLoggedIn())
+         {
+
+             Call<LikeResponse> call=ApiClient.getInstance(mContext).getApi().urunbegen("Bearer " +bearer,"application/json",id);
+             call.enqueue(new Callback<LikeResponse>() {
+                 @Override
+                 public void onResponse(Call<LikeResponse> call, Response<LikeResponse> response) {
+
+                     if (response.body().getStatus().equals("success")) {
+                         if (product.getIs_liked()) {
+                             cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+                         } else {
+                             cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+                         }
+                     }
+
+                 }
+
+                 @Override
+                 public void onFailure(Call<LikeResponse> call, Throwable t) {
+
+                 }
+             });
+
+
+             //fragmentManager.beginTransaction().replace(R.id.container, new FragmentDialogSignup()).commit();
+
+             //dialogSignup.show(getSupportFragmentManager(),"DialogSignup");
+
+             //AppCompatActivity activity1 = (AppCompatActivity) buttonView.getContext();
+             //activity1.getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentDialogSignup).addToBackStack(null).commit();
          }else {
-             buttonView.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+             FragmentDialogSignup dialogSignup = new FragmentDialogSignup();
+             dialogSignup.show(fragmentManager,"DialogSignup");
          }
      }
  });
@@ -125,11 +160,11 @@ public class FragmentUrunDetay extends Fragment {
                 @Override
                 public void onResponse(Call<UrunDetayResponse> call, Response<UrunDetayResponse> response) {
 
-                    Product product = response.body().getData();
+                    product = response.body().getData();
 
                   if (product.getIs_liked()){
                         cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
-                        cbfav.setChecked(true);
+
                     }else {
                         cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
                     }
@@ -172,6 +207,7 @@ public class FragmentUrunDetay extends Fragment {
             });
             //Toast.makeText(mContext, R.string.internet_baglanti, Toast.LENGTH_LONG).show();
         }
+
 
         return view;
 

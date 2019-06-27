@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+    <LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/grey_line">
+        <ImageView
+            android:id="@+id/image"
+            android:src="@drawable/tesbih1"
+            android:scaleType="fitXY"
+            android:layout_width="100dp"
+            android:layout_height="120dp"
+            android:layout_margin="10dp"/>
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="El Yapımı Tesbih"
+                android:layout_margin="10dp"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Özel El yapımı kehribar tesbih."
+                android:layout_margin="10dp" />
+            <TextView
+                android:id="@+id/pricetotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Toplam: 258 TL"
+                android:layout_margin="10dp" />
+        </LinearLayout>
+    </LinearLayout>

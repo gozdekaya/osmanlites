@@ -5,11 +5,14 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.PagerSnapHelper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SnapHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,15 +22,18 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import Fragments.FragmentDialogSignup;
 import Fragments.FragmentUrunDetay;
 import Models.Product;
 import Responses.AddCartResponse;
+import Responses.LikeResponse;
 import Utils.ApiClient;
 import Utils.ApiInterface;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import com.google.android.gms.common.api.Api;
 import com.gozde.osmanlitapp.R;
 import com.gozde.osmanlitapp.SharedPrefManager;
 
@@ -41,13 +47,14 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
     RecyclerView rv;
     String description;
     String halfdescription;
-
+    FragmentManager fragmentManager;
     MainHorzAdapter mRecycAdapter;
 
-    public MainPageAdapter(List<Product> productList,Context context) {
+    public MainPageAdapter(List<Product> productList,Context context, FragmentManager fragmentManager) {
         this.productList=productList;
         this.inflater=LayoutInflater.from(context);
         this.context=context;
+        this.fragmentManager = fragmentManager;
 
     }
 
@@ -64,22 +71,54 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
     public void onBindViewHolder(@NonNull final MainPageAdapter.ViewHolder viewHolder, int i) {
      final Product myProduct = productList.get(i);
 
-       viewHolder. cbfav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+       viewHolder.cbfav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (isChecked){
-                    buttonView.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+                ApiInterface apiInterface=ApiClient.getInstance(context).getApi();
+                String bearer= SharedPrefManager.getInstance(context).getToken();
+                String id = myProduct.getId();
+                FragmentDialogSignup fragmentDialogSignup=new FragmentDialogSignup();
+                if(SharedPrefManager.getInstance(context).isLoggedIn())
+                {
+
+                    Call<LikeResponse> call=apiInterface.urunbegen("Bearer " +bearer,"application/json",id);
+                call.enqueue(new Callback<LikeResponse>() {
+                    @Override
+                    public void onResponse(Call<LikeResponse> call, Response<LikeResponse> response) {
+
+                        if (response.body().getStatus().equals("success")) {
+                            if (myProduct.getIs_liked()) {
+                                myProduct.setIs_liked(false);
+                                viewHolder.cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+                            } else {
+                                myProduct.setIs_liked(true);
+                                viewHolder.cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+                            }
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<LikeResponse> call, Throwable t) {
+
+                    }
+                });
+
+
+                    //fragmentManager.beginTransaction().replace(R.id.container, new FragmentDialogSignup()).commit();
+
+                    //dialogSignup.show(getSupportFragmentManager(),"DialogSignup");
+
+                    //AppCompatActivity activity1 = (AppCompatActivity) buttonView.getContext();
+                    //activity1.getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentDialogSignup).addToBackStack(null).commit();
                 }else {
-                    buttonView.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
+                    FragmentDialogSignup dialogSignup = new FragmentDialogSignup();
+                 dialogSignup.show(fragmentManager,"DialogSignup");
                 }
+
             }
         });
-        if (myProduct.getIs_liked()){
-            viewHolder.cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
-            viewHolder.cbfav.setChecked(true);
-        }else {
-            viewHolder.cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
-        }
+        //burası
      viewHolder.setData(myProduct,i);
      viewHolder.name.setText(myProduct.getTitle());
      viewHolder.price.setText(myProduct.getPrice());
@@ -167,6 +206,14 @@ public class MainPageAdapter extends RecyclerView.Adapter<MainPageAdapter.ViewHo
             if (rv.getOnFlingListener()==null){
                 SnapHelper snapHelper = new PagerSnapHelper();
                 snapHelper.attachToRecyclerView(rv);
+            }
+            if (selectedProduct.getIs_liked()){
+                selectedProduct.setIs_liked(true);
+                cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
+                //viewHolder.cbfav.setChecked(true);
+            }else {
+                selectedProduct.setIs_liked(false);
+                cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
             }
         }
     }

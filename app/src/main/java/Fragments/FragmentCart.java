@@ -32,7 +32,7 @@ import retrofit2.Response;
 public class FragmentCart extends Fragment {
     Context mContext;
     TextView bosText;
-    TextView totalprice,logintext;
+    TextView totalprice,logintext,totalitem;
     DataSepet items;
     Boolean isConnected = false;
     RecyclerView recyclerView;
@@ -63,6 +63,7 @@ public class FragmentCart extends Fragment {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setNestedScrollingEnabled(false);
         totalprice=view.findViewById(R.id.total);
+        totalitem=view.findViewById(R.id.totalitem);
         button=(Button)view.findViewById(R.id.button_payment);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +100,7 @@ public class FragmentCart extends Fragment {
                             bosText.setVisibility(View.VISIBLE);
                             startshop.setVisibility(View.VISIBLE);
                             totalprice.setVisibility(View.INVISIBLE);
+                            totalitem.setVisibility(View.INVISIBLE);
                             button.setVisibility(View.INVISIBLE);
                         } else {
                             bosText.setVisibility(View.INVISIBLE);
@@ -106,6 +108,7 @@ public class FragmentCart extends Fragment {
                         adapter.setItems(items.getCartList());
                         adapter.notifyDataSetChanged();
                         totalprice.setText(items.getTotalPrice());
+                        totalitem.setText(String.valueOf(items.getTotalCount()));
 
                         recyclerView.setAdapter(adapter);
 

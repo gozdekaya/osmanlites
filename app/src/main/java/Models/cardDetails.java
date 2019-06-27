@@ -1,23 +1,14 @@
 package Models;
 
 public class cardDetails {
+String id,cardAlias,binNumber,lastFourDigits,cardType,cardAssociation,cardFamily,cardBankName;
 
-    String cardToken;
-    String cardAlias;
-    String binNumber;
-    String lastFourDigits;
-    String cardType;
-    String cardAssociation;
-    String cardFamily;
-    int cardBankCode;
-    String cardBankName;
-
-    public String getCardToken() {
-        return cardToken;
+    public String getId() {
+        return id;
     }
 
-    public void setCardToken(String cardToken) {
-        this.cardToken = cardToken;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getCardAlias() {
@@ -66,14 +57,6 @@ public class cardDetails {
 
     public void setCardFamily(String cardFamily) {
         this.cardFamily = cardFamily;
-    }
-
-    public int getCardBankCode() {
-        return cardBankCode;
-    }
-
-    public void setCardBankCode(int cardBankCode) {
-        this.cardBankCode = cardBankCode;
     }
 
     public String getCardBankName() {

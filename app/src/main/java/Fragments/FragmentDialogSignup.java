@@ -1,6 +1,7 @@
 package Fragments;
 
 import android.app.Fragment;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -76,8 +77,6 @@ public class FragmentDialogSignup extends DialogFragment implements View.OnClick
 
 
     }
-
-
 
     @Nullable
     @Override

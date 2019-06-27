@@ -51,6 +51,8 @@
             <com.facebook.login.widget.LoginButton
 
                 android:id="@+id/login_button"
+                android:paddingBottom="27dp"
+                android:layout_marginTop="2dp"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"

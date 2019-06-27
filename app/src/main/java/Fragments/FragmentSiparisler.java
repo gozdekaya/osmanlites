@@ -12,13 +12,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import com.google.android.gms.common.api.Api;
 import com.gozde.osmanlitapp.R;
+import com.gozde.osmanlitapp.SharedPrefManager;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import Adapters.SiparisAdapter;
 import Models.Siparis;
+import Responses.SiparisResponse;
+import Utils.ApiClient;
+import Utils.ApiInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FragmentSiparisler extends Fragment {
 private List<Siparis> orders=new ArrayList<>();
@@ -40,15 +48,26 @@ Context mContext;
                 getActivity().onBackPressed();
             }
         });
-        recyclerView=(RecyclerView)view.findViewById(R.id.recycler_siparis);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(mContext);
-        recyclerView.setLayoutManager(layoutManager);
-        adapter=new SiparisAdapter(orders);
-        recyclerView.setAdapter(adapter);
+       Call<SiparisResponse> call=ApiClient.getInstance(mContext).getApi().orders("Bearer " + SharedPrefManager.getInstance(mContext).getToken(), "application/json");
+       call.enqueue(new Callback<SiparisResponse>() {
+           @Override
+           public void onResponse(Call<SiparisResponse> call, Response<SiparisResponse> response) {
+               orders=response.body().getData();
+               LinearLayoutManager layoutManager=new LinearLayoutManager(mContext);
+               recyclerView.setLayoutManager(layoutManager);
+               adapter=new SiparisAdapter(orders, mContext);
+               recyclerView.setAdapter(adapter);
+           }
 
-        orders.add(new Siparis("18 Ocak 2019","345 TL",1,"Güzelyalı Mah Şebnem Sitesi Cblok Adana","http://www.tesbihcizadem.com/image/cache/data/resimler/orjinal-deamla-kehribar-tesbih-ates-rengi-13-mm-3540-1200x1024.jpg"));
-        orders.add(new Siparis("17 Mayıs 2019","745 TL",1,"Güzelyalı Mah Şebnem Sitesi Cblok Adana","http://www.tesbihcizadem.com/image/cache/data/resimler/orjinal-deamla-kehribar-tesbih-ates-rengi-13-mm-3540-1200x1024.jpg"));
-        orders.add(new Siparis("14 Mart 2019","345 TL",1,"Güzelyalı Mah Şebnem Sitesi Cblok Adana","http://www.tesbihcizadem.com/image/cache/data/resimler/orjinal-deamla-kehribar-tesbih-ates-rengi-13-mm-3540-1200x1024.jpg"));
+           @Override
+           public void onFailure(Call<SiparisResponse> call, Throwable t) {
+
+           }
+       });
+        recyclerView=(RecyclerView)view.findViewById(R.id.recycler_siparis);
+
+
+
         return view;
     }
     @Override

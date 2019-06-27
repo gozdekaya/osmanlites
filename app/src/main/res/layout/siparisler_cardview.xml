@@ -56,14 +56,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Teslim Edildi"/>
+<android.support.v7.widget.RecyclerView
+    android:id="@+id/recycler_products"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/image_order"
-            android:layout_margin="5dp"
-            android:layout_width="75dp"
-            android:layout_height="110dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/tesbih1"/>
+</android.support.v7.widget.RecyclerView>
+
 
     </LinearLayout>
 </RelativeLayout>

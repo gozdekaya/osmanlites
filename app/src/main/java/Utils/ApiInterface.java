@@ -12,12 +12,16 @@ import Responses.CountryResponse;
 import Responses.CreditCardResponse;
 import Responses.DeleteCartResponse;
 import Responses.DisProductResponse;
+import Responses.FavoriResponse;
 import Responses.KategoriUrunResponse;
+import Responses.LikeResponse;
 import Responses.LoginResponse;
 import Responses.PayJson;
 import Responses.ProductResponse;
 import Responses.RegisterResponse;
 import Responses.SearchResponse;
+import Responses.SiparisDetayResponse;
+import Responses.SiparisResponse;
 import Responses.UrunDetayResponse;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -219,5 +223,35 @@ Call<UrunDetayResponse>urundetaylogin(
     @GET("discounted-products")
     Call<ProductResponse> indurun(
             @Header("Accept") String accept
+    );
+
+    //Like
+    @GET("products/{productId}/like")
+    Call<LikeResponse> urunbegen(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept,
+            @Path("productId") String productId
+    );
+
+    //Favoriler
+    @GET("favorites")
+    Call<FavoriResponse> favoriler(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept
+    );
+
+    //Siparislerim
+    @GET("orders")
+    Call<SiparisResponse> orders(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept
+    );
+
+    //Siparis Detay
+    @GET("orders/{orderId}")
+    Call<SiparisDetayResponse> siparisdetay(
+            @Header("Authorization") String authorization,
+            @Header("Accept") String accept,
+            @Path("orderId") String orderId
     );
 }

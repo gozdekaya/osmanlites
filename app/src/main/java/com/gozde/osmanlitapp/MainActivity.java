@@ -31,11 +31,19 @@ import Fragments.FragmentHome;
 import Fragments.FragmentKesfet;
 import Fragments.FragmentProfile;
 import Fragments.FragmentSearch;
+import Models.DataSepet;
+import Responses.CartResponse;
+import Utils.ApiClient;
+import Utils.ApiInterface;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
     Boolean isFirst;
+    DataSepet items;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,9 +58,24 @@ public class MainActivity extends AppCompatActivity {
             getBaseContext().getResources().updateConfiguration(config,
                     getBaseContext().getResources().getDisplayMetrics());}
         setContentView(R.layout.activity_main);
+       /* ApiInterface apiInterface = ApiClient.getInstance(getApplicationContext()).getApi();
+        Call<CartResponse> call=apiInterface.sepeturunler("Bearer " + SharedPrefManager.getInstance(getApplicationContext()).getToken(), "application/json");
+        call.enqueue(new Callback<CartResponse>() {
+            @Override
+            public void onResponse(Call<CartResponse> call, Response<CartResponse> response) {
+                items=response.body().getData();
 
+            }
+
+            @Override
+            public void onFailure(Call<CartResponse> call, Throwable t) {
+
+            }
+        });*/
         BottomNavigationView bottomNavigationView=findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
+
+
         final Dialog dialog=new Dialog(MainActivity.this);
         dialog.setContentView(R.layout.custom_dialog);
         Button btnturkce=(Button)dialog.findViewById(R.id.turkce);

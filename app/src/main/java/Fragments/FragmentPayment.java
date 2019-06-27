@@ -29,6 +29,7 @@ import Adapters.SpinnerAdresAdapter;
 import Adapters.SpinnerCardAdapter;
 import Models.Address;
 import Models.Card;
+import Models.Country;
 import Models.cardDetails;
 import Responses.AdresResponse;
 import Responses.CreditCardResponse;
@@ -65,7 +66,7 @@ public class FragmentPayment extends Fragment {
          devam.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View v) {
-                 if (cb2.isChecked() && cvv.getText().length() == 3 && cardno.getText().length() == 16){
+
                      int a =spinnerFat.getSelectedItemPosition();
                      int b =spinnerAdr.getSelectedItemPosition();
                      int x =spinnerCard.getSelectedItemPosition();
@@ -77,17 +78,32 @@ public class FragmentPayment extends Fragment {
                      Fragment fragmentonizleme =new FragmentSiparisOnizleme();
                      Bundle bundle = new Bundle();
 
-                     if (isRegisteredCard){
+                     if (isRegisteredCard ){
+                         if ( spinnerCard.getSelectedItem()!=null){
+                             cardDetails sc = (cardDetails) spinnerCard.getSelectedItem();
+                             String cardId = sc.getId();
+                             bundle.putString("cardId",cardId);
+
+                         }else {
+                             Toast.makeText(getContext(),"Lütfen Tüm Alanları Doldurunuz ve Kullanıcı Sözleşmesini Onaylayınız",Toast.LENGTH_SHORT).show();
+
+                         }
 
                      } else {
-                         bundle.putString("holderName",holder.getText().toString());
-                         bundle.putString("number",cardno.getText().toString());
-                         bundle.putString("cvc",cvv.getText().toString());
-                         bundle.putString("expireMonth",c);
-                         bundle.putString("expireYear", d);
+                         if (cb2.isChecked() && cvv.getText().length() == 3 && cardno.getText().length() == 16 ){
+                             bundle.putString("holderName",holder.getText().toString());
+                             bundle.putString("number",cardno.getText().toString());
+                             bundle.putString("cvc",cvv.getText().toString());
+                             bundle.putString("expireMonth",c);
+                             bundle.putString("expireYear", d);
+                         }else {
+                             Toast.makeText(getContext(),"Lütfen Tüm Alanları Doldurunuz ve Kullanıcı Sözleşmesini Onaylayınız",Toast.LENGTH_SHORT).show();
+                         }
+
+
                      }
 
-                     kartlar=cards.get(x).getCardAlias() + " " + cards.get(x).getBinNumber() + " " + cards.get(x).getCardToken();
+                     kartlar=cards.get(x).getCardAlias() + " " + cards.get(x).getBinNumber() + " " + cards.get(x).getId();
                      fatura =adresler.get(a).getName() + "-" +  adresler.get(a).getDescription() + " " +  adresler.get(a).getTown() + "/" +  adresler.get(a).getCity() + "/" +  adresler.get(a).getCountry().getTitle();
                      teslimat =  adresler.get(b).getName() + "-" +  adresler.get(b).getDescription() + " " +  adresler.get(b).getTown() + "/" +  adresler.get(b).getCity() + "/" +  adresler.get(b).getCountry().getTitle();
                      bundle.putString("fatura", fatura);
@@ -95,13 +111,12 @@ public class FragmentPayment extends Fragment {
                      bundle.putString("teslimat",teslimat);
                      bundle.putString("shippingAddressId", adresler.get(b).getId().toString());
                      bundle.putString("billingAddressId", adresler.get(a).getId().toString());
-
+                     bundle.putBoolean("isRegisteredCard",isRegisteredCard);
                      fragmentonizleme.setArguments(bundle);
                      getFragmentManager().beginTransaction().replace(R.id.container,fragmentonizleme).addToBackStack(null).commit();
-                 }else
-                     Toast.makeText(getContext(),"Lütfen Tüm Alanları Doldurunuz ve Kullanıcı Sözleşmesini Onaylayınız",Toast.LENGTH_SHORT).show();
+                 }
 
-             }
+
          });
          cvv=view.findViewById(R.id.cvv);
          cardno=view.findViewById(R.id.kartno);

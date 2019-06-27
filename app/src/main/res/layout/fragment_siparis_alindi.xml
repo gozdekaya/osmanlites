@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="Fragments.SiparisAlindiFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <ImageView
+        android:layout_margin="100dp"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:src="@drawable/onaylandi" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Siparişiniz Alınmıştır!"
+        android:textSize="22sp"
+        android:textColor="@color/green"/>
+
+    <Button
+        android:id="@+id/gohome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button_shape"
+        android:layout_margin="50dp"
+        android:text="Ana Sayfaya Dön"
+        android:padding="10dp"
+        android:textColor="#fff"/>
+
+</LinearLayout>

@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gozde.osmanlitapp.R;
+import com.gozde.osmanlitapp.SharedPrefManager;
 import com.yarolegovich.discretescrollview.InfiniteScrollAdapter;
 import com.yarolegovich.discretescrollview.transform.ScaleTransformer;
 
@@ -22,7 +23,9 @@ import java.util.List;
 
 import Adapters.ExploreAdapter;
 import Adapters.ProfileFavAdapter;
+import Models.Favori;
 import Models.Product;
+import Responses.FavoriResponse;
 import Responses.ProductResponse;
 import Utils.ApiClient;
 import retrofit2.Call;
@@ -34,7 +37,7 @@ import retrofit2.Response;
  */
 public class FragmentAyarlar extends Fragment {
 ImageView settings;
-    private List<Product> products;
+    private List<Favori> products;
     ProfileFavAdapter adapter;
 RecyclerView recyclerfav;
     public FragmentAyarlar() {
@@ -50,14 +53,14 @@ RecyclerView recyclerfav;
                 getFragmentManager().beginTransaction().replace(R.id.container,new FragmentProfile()).commit();
             }
         });
-
-        Call<ProductResponse> call= ApiClient.getInstance(getContext()).getApi().urunler("application/json");
-        call.enqueue(new Callback<ProductResponse>() {
+        String bearer= SharedPrefManager.getInstance(getContext()).getToken();
+        Call<FavoriResponse> call= ApiClient.getInstance(getContext()).getApi().favoriler("Bearer " + bearer,"application/json");
+        call.enqueue(new Callback<FavoriResponse>() {
             @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+            public void onResponse(Call<FavoriResponse> call, Response<FavoriResponse> response) {
 
 
-                products=response.body().getData().getProducts();
+                products=response.body().getData();
                 adapter=new ProfileFavAdapter(products);
                 recyclerfav.setAdapter(adapter);
                 recyclerfav.setLayoutManager(new GridLayoutManager(getContext(),2));
@@ -66,7 +69,7 @@ RecyclerView recyclerfav;
             }
 
             @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
+            public void onFailure(Call<FavoriResponse> call, Throwable t) {
                 Log.d("failure",t.getMessage());
             }
         });

@@ -15,12 +15,13 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import Models.Favori;
 import Models.Product;
 
 public class ProfileFavAdapter extends RecyclerView.Adapter<ProfileFavAdapter.ViewHolder>{
-    List<Product> products = new ArrayList<>();
+    List<Favori> products = new ArrayList<>();
 
-    public ProfileFavAdapter(List<Product> products) {
+    public ProfileFavAdapter(List<Favori> products) {
         this.products = products;
     }
 
@@ -35,7 +36,7 @@ public class ProfileFavAdapter extends RecyclerView.Adapter<ProfileFavAdapter.Vi
 
     @Override
     public void onBindViewHolder(@NonNull ProfileFavAdapter.ViewHolder viewHolder, int i) {
-       final Product product=products.get(i);
+       final Product product=products.get(i).getProduct();
         viewHolder.tvname.setText(product.getTitle());
         viewHolder.tvprice.setText(product.getPrice());
         Picasso.get().load(product.getProfile_image()).into(viewHolder.image);

@@ -10,6 +10,7 @@ public class DataSepet {
     @SerializedName("shoppingCards")
    private List<Cart> cartList;
     private String totalPrice;
+    int totalCount;
 
     public List<Cart> getCartList() {
         return cartList;
@@ -25,5 +26,13 @@ public class DataSepet {
 
     public void setTotalPrice(String totalPrice) {
         this.totalPrice = totalPrice;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
     }
 }

@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -65,6 +66,9 @@ public class FragmentHome extends Fragment {
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     Context mContext;
+
+    FragmentActivity fragmentActivity;
+
     public FragmentHome(){}
     @Nullable
     @Override
@@ -95,7 +99,7 @@ public class FragmentHome extends Fragment {
 
                     nextPage=(String) response.body().getData().getPagination().getNext_page_url();
 
-                    adapter=new MainPageAdapter(data.getProducts(),mContext);
+                    adapter=new MainPageAdapter(data.getProducts(),mContext, fragmentActivity.getSupportFragmentManager());
                     recyclerView1.setAdapter(adapter);
                     recyclerView1.setHasFixedSize(true);
                     recyclerView1.setItemViewCacheSize(15);
@@ -117,7 +121,7 @@ public class FragmentHome extends Fragment {
 
                     nextPage=(String) response.body().getData().getPagination().getNext_page_url();
 
-                    adapter=new MainPageAdapter(data.getProducts(),mContext);
+                    adapter=new MainPageAdapter(data.getProducts(),mContext, fragmentActivity.getSupportFragmentManager());
                     recyclerView1.setAdapter(adapter);
                     recyclerView1.setHasFixedSize(true);
                     recyclerView1.setItemViewCacheSize(15);
@@ -191,31 +195,57 @@ public class FragmentHome extends Fragment {
     }
 
     public void requestNextPage(){
+        String bearer1= SharedPrefManager.getInstance(getContext()).getToken();
         ApiInterface apiInterface =ApiClient.getInstance(mContext).getApi();
-        Call<ProductResponse> call = apiInterface.urunler("application/json");
-        call.enqueue(new Callback<ProductResponse>() {
-            @Override
-            public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
-               if (response.body() != null){
-                   dataek=response.body().getData();
-                   adapter.addMore(dataek.getProducts());
-               }else {
-                   Log.d("r_error", response.errorBody().toString());
-               }
+        if (SharedPrefManager.getInstance(mContext).isLoggedIn()){
+            Call<ProductResponse> call = apiInterface.urunlogin("Bearer " +bearer1,"application/json");
+            call.enqueue(new Callback<ProductResponse>() {
+                @Override
+                public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                    if (response.body() != null){
+                        dataek=response.body().getData();
+                        adapter.addMore(dataek.getProducts());
+                    }else {
+                        Log.d("r_error", response.errorBody().toString());
+                    }
 
-            }
+                }
 
-            @Override
-            public void onFailure(Call<ProductResponse> call, Throwable t) {
-                t.printStackTrace();
-            }
-        });
-    }
+                @Override
+                public void onFailure(Call<ProductResponse> call, Throwable t) {
+                    t.printStackTrace();
+                }
+            });
+        }else {
+            ApiInterface apiInterface1 =ApiClient.getInstance(mContext).getApi();
+            if (SharedPrefManager.getInstance(mContext).isLoggedIn()) {
+                Call<ProductResponse> call = apiInterface1.urunler("application/json");
+                call.enqueue(new Callback<ProductResponse>() {
+                    @Override
+                    public void onResponse(Call<ProductResponse> call, Response<ProductResponse> response) {
+                        if (response.body() != null) {
+                            dataek = response.body().getData();
+                            adapter.addMore(dataek.getProducts());
+                        } else {
+                            Log.d("r_error", response.errorBody().toString());
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ProductResponse> call, Throwable t) {
+                        t.printStackTrace();
+                    }
+                });
+
+
+            }}}
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
         this.mContext = context;
+        this.fragmentActivity = (FragmentActivity) context;
         new BackgroundTask().execute();
 
     }

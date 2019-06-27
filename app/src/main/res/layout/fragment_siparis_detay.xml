@@ -17,67 +17,77 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/siparis_no"
-            android:textSize="14sp"
-            android:textColor="#000"
-            android:layout_margin="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/siparis_tarih"
-            android:textSize="14sp"
-            android:textColor="#000"
-            android:layout_margin="10dp" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/toplam"
-            android:textSize="14sp"
-            android:textColor="#000"
-            android:layout_margin="10dp" />
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:background="@drawable/grey_line">
-        <ImageView
-            android:src="@drawable/tesbih1"
-            android:scaleType="fitXY"
-            android:layout_width="100dp"
-            android:layout_height="120dp"
-            android:layout_margin="10dp"/>
         <LinearLayout
-            android:layout_margin="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="El Yapımı Tesbih"
-            android:layout_margin="10dp"
-            android:textColor="#000"/>
+            android:orientation="horizontal">
             <TextView
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Özel El yapımı kehribar tesbih."
+                android:text="@string/siparis_no"
+                android:textSize="14sp"
+                android:textColor="#000"
                 android:layout_margin="10dp" />
             <TextView
-
+                android:id="@+id/orderno"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Toplam: 258 TL"
+                android:text="@string/siparis_no"
+                android:textSize="14sp"
+                android:textColor="@color/blue"
                 android:layout_margin="10dp" />
         </LinearLayout>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <TextView
+
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/siparis_tarih"
+        android:textSize="14sp"
+        android:textColor="#000"
+        android:layout_margin="10dp" />
+    <TextView
+        android:id="@+id/orderdate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/siparis_tarih"
+        android:textSize="14sp"
+        android:textColor="@color/blue"
+        android:layout_margin="10dp" />
+</LinearLayout>
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="horizontal">
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/toplam"
+             android:textSize="14sp"
+             android:textColor="#000"
+             android:layout_margin="10dp" />
+         <TextView
+             android:id="@+id/orderprice"
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:text="@string/toplam"
+             android:textSize="14sp"
+             android:textColor="@color/blue"
+             android:layout_margin="10dp" />
+     </LinearLayout>
+
+
+
     </LinearLayout>
+<android.support.v7.widget.RecyclerView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/rc_items">
+
+</android.support.v7.widget.RecyclerView>
 <LinearLayout
     android:background="@drawable/grey_line"
 
@@ -88,11 +98,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/teslimat_adres"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/blue"
         android:textSize="14sp"
         android:layout_margin="10dp"/>
 
     <TextView
+        android:id="@+id/adrname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Gözde Kaya"
@@ -101,13 +112,13 @@
         android:textSize="14sp"
         />
     <TextView
-
+         android:id="@+id/adres"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Güzelyalı mahallesi 765. sokak No:10 Şebnem Sitesi C blok Adana/TURKEY"
         android:layout_margin="10dp"/>
     <TextView
-
+        android:id="@+id/phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="05394794643"
@@ -122,7 +133,7 @@
             android:layout_height="wrap_content"
             android:text="@string/odeme_bilgileri"
             android:layout_margin="10dp"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/blue"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

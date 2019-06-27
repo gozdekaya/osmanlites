@@ -14,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.google.android.gms.common.api.Api;
 import com.google.gson.JsonArray;
@@ -42,8 +44,8 @@ DataSepet items;
 Button btnOnay;
 ImageButton backbtn;
 TextView toplam,faturadres,tesadres;
-String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,expmonth,expyear,kartlarim;
-
+String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,expmonth,expyear,cardId;
+    Boolean isRegisteredCard = false;
 
     public FragmentSiparisOnizleme() {
 
@@ -56,16 +58,25 @@ String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,e
                              Bundle savedInstanceState) {
        View view=inflater.inflate(R.layout.layout_sepet_onizleme, container, false);
          Bundle bundle=this.getArguments();
+         isRegisteredCard=bundle.getBoolean("isRegisteredCard");
+if (isRegisteredCard){
+    teslimatAdresId= bundle.getString("billingAddressId");
+    faturaAdresId=bundle.getString("shippingAddressId");
+    fatura=bundle.getString("fatura","yok");
+    teslimat=bundle.getString("teslimat","yok");
+    cardId=bundle.getString("cardId");
 
-         fatura=bundle.getString("fatura","yok");
-         teslimat=bundle.getString("teslimat","yok");
-         teslimatAdresId= bundle.getString("billingAddressId");
-         faturaAdresId=bundle.getString("shippingAddressId");
-         holdername=bundle.getString("holderName");
-         cvvno=bundle.getString("cvc");
-         kartno=bundle.getString("number");
-         expmonth=bundle.getString("expireMonth");
-         expyear=bundle.getString("expireYear");
+}else {
+    fatura=bundle.getString("fatura","yok");
+    teslimat=bundle.getString("teslimat","yok");
+    teslimatAdresId= bundle.getString("billingAddressId");
+    faturaAdresId=bundle.getString("shippingAddressId");
+    holdername=bundle.getString("holderName");
+    cvvno=bundle.getString("cvc");
+    kartno=bundle.getString("number");
+    expmonth=bundle.getString("expireMonth");
+    expyear=bundle.getString("expireYear");}
+
          btnOnay=view.findViewById(R.id.onay);
        toplam=view.findViewById(R.id.total);
        tesadres=view.findViewById(R.id.telimadres);
@@ -111,26 +122,36 @@ String fatura,teslimat, teslimatAdresId, faturaAdresId,holdername,cvvno,kartno,e
             public void onClick(View v) {
                 JsonObject PaymentJson = new JsonObject();
                  JsonObject cardobj =new JsonObject();
+                if (isRegisteredCard){
+                    PaymentJson.addProperty("shippingAddressId",teslimatAdresId);
+                    PaymentJson.addProperty("billingAddressId",faturaAdresId);
+                    cardobj.addProperty("cardId",cardId);
+                    PaymentJson.add("card",cardobj);
+                }else {
+                    PaymentJson.addProperty("shippingAddressId",teslimatAdresId);
+                    PaymentJson.addProperty("billingAddressId",faturaAdresId);
+                    cardobj.addProperty("holderName", holdername);
+                    cardobj.addProperty("number", kartno);
+                    cardobj.addProperty("cvc", cvvno);
+                    cardobj.addProperty("expireMonth", expmonth);
+                    cardobj.addProperty("expireYear", expyear);
+                    PaymentJson.add("card",cardobj);
+                }
 
-                PaymentJson.addProperty("shippingAddressId",teslimatAdresId);
-                PaymentJson.addProperty("billingAddressId",faturaAdresId);
-                cardobj.addProperty("holderName", holdername);
-                cardobj.addProperty("number", kartno);
-                cardobj.addProperty("cvc", cvvno);
-                cardobj.addProperty("expireMonth", expmonth);
-                cardobj.addProperty("expireYear", expyear);
-                PaymentJson.add("card",cardobj);
                 Log.d("paymentjson", String.valueOf(PaymentJson));
 
                 Call<PayJson> call = ApiClient.getInstance(getContext()).getApi().postRawJSON("Bearer " + SharedPrefManager.getInstance(getContext()).getToken(), "application/json",PaymentJson);
                 call.enqueue(new Callback<PayJson>() {
                     @Override
                     public void onResponse(Call<PayJson> call, Response<PayJson> response) {
-                        try{
-                            Log.e("response-success", response.body().toString());
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
+
+                        if (response.body().getStatus().equals("success")){
+
+                            getFragmentManager().beginTransaction().replace(R.id.container,new SiparisAlindiFragment()).commit();
+                          Toast.makeText(getContext(),"Başarılı",Toast.LENGTH_SHORT).show();
+                      }else {
+                          Toast.makeText(getContext(),"Tekrar Dene",Toast.LENGTH_SHORT).show();
+                      }
 
 
                     }
