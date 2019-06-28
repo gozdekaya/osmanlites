@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
@@ -49,7 +50,7 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class FragmentUrunDetay extends Fragment {
 
-     TextView product_title,product_desc,product_price,addcart;
+     TextView product_title,product_desc,product_price,addcart,dis_price,normalprice;
     ViewPager viewPager;
     SliderAdapter adapter;
     ProgressBar mProgressBar;
@@ -62,7 +63,7 @@ public class FragmentUrunDetay extends Fragment {
    Boolean isFavorite;
    Cart mCart;
     LinearLayout layout;
-    FragmentManager fragmentManager;
+   FragmentActivity fragmentActivity;
     private Snackbar snackbar;
     Product product;
     @Nullable
@@ -73,13 +74,14 @@ public class FragmentUrunDetay extends Fragment {
 
 
 
-
+normalprice=view.findViewById(R.id.normalprice);
 
         viewPager=(ViewPager)view.findViewById(R.id.slide_view);
         mProgressBar=(ProgressBar)view.findViewById(R.id.progressBar1);
         layout=(LinearLayout)view.findViewById(R.id.lin1);
         indicator=(TabLayout)view.findViewById(R.id.indicator);
         indicator.setupWithViewPager(viewPager, true);
+        dis_price=view.findViewById(R.id.disprice);
         product_price=(TextView)view.findViewById(R.id.price);
         product_title=(TextView)view.findViewById(R.id.product_name);
         product_desc=(TextView)view.findViewById(R.id.aciklama_urun);
@@ -90,10 +92,11 @@ public class FragmentUrunDetay extends Fragment {
  cbfav.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
      @Override
      public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-         String bearer= SharedPrefManager.getInstance(mContext).getToken();
-         String id = product.getId();
+
          if(SharedPrefManager.getInstance(mContext).isLoggedIn())
          {
+             String bearer= SharedPrefManager.getInstance(mContext).getToken();
+             String id = product.getId();
 
              Call<LikeResponse> call=ApiClient.getInstance(mContext).getApi().urunbegen("Bearer " +bearer,"application/json",id);
              call.enqueue(new Callback<LikeResponse>() {
@@ -102,8 +105,10 @@ public class FragmentUrunDetay extends Fragment {
 
                      if (response.body().getStatus().equals("success")) {
                          if (product.getIs_liked()) {
+                             product.setIs_liked(false);
                              cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
                          } else {
+                             product.setIs_liked(true);
                              cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
                          }
                      }
@@ -125,7 +130,7 @@ public class FragmentUrunDetay extends Fragment {
              //activity1.getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentDialogSignup).addToBackStack(null).commit();
          }else {
              FragmentDialogSignup dialogSignup = new FragmentDialogSignup();
-             dialogSignup.show(fragmentManager,"DialogSignup");
+             dialogSignup.show(fragmentActivity.getSupportFragmentManager(),"DialogSignup");
          }
      }
  });
@@ -163,13 +168,34 @@ public class FragmentUrunDetay extends Fragment {
                     product = response.body().getData();
 
                   if (product.getIs_liked()){
+                      product.setIs_liked(true);
                         cbfav.setButtonDrawable(R.drawable.ic_favorite_red_24dp);
 
                     }else {
+                      product.setIs_liked(false);
                         cbfav.setButtonDrawable(R.drawable.ic_favorite_black_24dp);
                     }
                     mProgressBar.setVisibility(View.GONE);
-                    product_price.setText(product.getPrice());
+
+                          if (product.getDiscount()==null){
+                              dis_price.setVisibility(View.GONE);
+                              product_price.setVisibility(View.GONE);
+                              normalprice.setText(product.getPrice());
+                              normalprice.setVisibility(View.VISIBLE);
+                          }else{
+                              normalprice.setText(product.getPrice());
+                             normalprice.setVisibility(View.GONE);
+                              dis_price.setVisibility(View.VISIBLE);
+                              product_price.setVisibility(View.VISIBLE);
+                              product_price.setText(product.getPrice());
+                              dis_price.setText(product.getDiscount().getDiscounted_price());
+                          }
+
+
+
+
+
+
                     product_title.setText(product.getTitle());
                     product_desc.setText(product.getDescription());
                     images = product.getMedia();
@@ -191,9 +217,22 @@ public class FragmentUrunDetay extends Fragment {
                 public void onResponse(Call<UrunDetayResponse> call, Response<UrunDetayResponse> response) {
                     Product product = response.body().getData();
 
-
+                    if (product.getDiscount()==null){
+                        dis_price.setVisibility(View.GONE);
+                        product_price.setVisibility(View.GONE);
+                        normalprice.setText(product.getPrice());
+                        normalprice.setVisibility(View.VISIBLE);
+                    }else{
+                        normalprice.setText(product.getPrice());
+                        normalprice.setVisibility(View.GONE);
+                        dis_price.setVisibility(View.VISIBLE);
+                        product_price.setVisibility(View.VISIBLE);
+                        product_price.setText(product.getPrice());
+                        dis_price.setText(product.getDiscount().getDiscounted_price());
+                    }
                     mProgressBar.setVisibility(View.GONE);
                     product_price.setText(product.getPrice());
+
                     product_title.setText(product.getTitle());
                     product_desc.setText(product.getDescription());
                     images = product.getMedia();
@@ -218,6 +257,8 @@ public class FragmentUrunDetay extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         this.mContext = context;
+        this.fragmentActivity = (FragmentActivity) context;
+
         if (checkConnection()) isConnected = true;
         else isConnected = false;
     }

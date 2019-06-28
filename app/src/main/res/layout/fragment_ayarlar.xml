@@ -51,11 +51,32 @@
         android:layout_height="70dp"
         android:layout_margin="10dp"
         android:src="@drawable/tesbih1"/>
-
+    <LinearLayout
+        android:id="@+id/linfav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="15dp">
+        <TextView
+            android:id="@+id/pronum"
+            android:layout_marginLeft="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="3"
+            android:textSize="20sp"
+            android:background="@null"/>
+        <TextView
+            android:id="@+id/favoriler"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:text="FAVORİLER"/>
+    </LinearLayout>
 <LinearLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:id="@+id/linsip"
     android:layout_margin="15dp">
     <TextView
         android:layout_marginLeft="10dp"
@@ -70,24 +91,7 @@
         android:textSize="14sp"
         android:text="SİPARİŞLERİM"/>
 </LinearLayout>
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_margin="15dp">
-        <TextView
-            android:layout_marginLeft="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="3"
-            android:textSize="20sp"
-            android:background="@null"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="14sp"
-            android:text="FAVORİLER"/>
-    </LinearLayout>
+
 </LinearLayout>
     <TextView
         android:layout_width="wrap_content"
@@ -128,6 +132,13 @@
         android:id="@+id/recyclerfav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
+    </android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/recyclersip">
 
     </android.support.v7.widget.RecyclerView>
 </LinearLayout>

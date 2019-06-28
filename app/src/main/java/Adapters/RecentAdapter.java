@@ -1,6 +1,8 @@
 package Adapters;
 
+import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import Fragments.FragmentUrunDetay;
 import Models.Product;
 
 public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder> {
@@ -32,6 +35,18 @@ public class RecentAdapter extends RecyclerView.Adapter<RecentAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull RecentAdapter.ViewHolder viewHolder, int i) {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentUrunDetay fragmentUrunDetay=new FragmentUrunDetay();
+                Bundle args=new Bundle();
+                String string=mProducts.get(i).getId();
+                args.putString("ID",string);
+                fragmentUrunDetay.setArguments(args);
+                AppCompatActivity activity = (AppCompatActivity) v.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.container,fragmentUrunDetay).addToBackStack(null).commit();
+            }
+        });
      viewHolder.name.setText(mProducts.get(i).getTitle());
      viewHolder.price.setText(mProducts.get(i).getPrice());
      viewHolder.disprice.setText(mProducts.get(i).getDiscount().getDiscounted_price());

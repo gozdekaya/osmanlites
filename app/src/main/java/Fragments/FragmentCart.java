@@ -31,8 +31,8 @@ import retrofit2.Response;
 
 public class FragmentCart extends Fragment {
     Context mContext;
-    TextView bosText;
-    TextView totalprice,logintext,totalitem;
+    TextView bosText,tire;
+    TextView totalprice,logintext,totalitem,urun;
     DataSepet items;
     Boolean isConnected = false;
     RecyclerView recyclerView;
@@ -59,11 +59,13 @@ public class FragmentCart extends Fragment {
         logintext=view.findViewById(R.id.login_texr);
         startshop=view.findViewById(R.id.startshop);
         bosText = view.findViewById(R.id.bosText);
+        tire=view.findViewById(R.id.tire);
        recyclerView = view.findViewById(R.id.recycler_sepet);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setNestedScrollingEnabled(false);
         totalprice=view.findViewById(R.id.total);
         totalitem=view.findViewById(R.id.totalitem);
+        urun=view.findViewById(R.id.urun);
         button=(Button)view.findViewById(R.id.button_payment);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +101,8 @@ public class FragmentCart extends Fragment {
                         if (items.getCartList().size() == 0) {
                             bosText.setVisibility(View.VISIBLE);
                             startshop.setVisibility(View.VISIBLE);
+                            urun.setVisibility(View.INVISIBLE);
+                            tire.setVisibility(View.INVISIBLE);
                             totalprice.setVisibility(View.INVISIBLE);
                             totalitem.setVisibility(View.INVISIBLE);
                             button.setVisibility(View.INVISIBLE);
@@ -116,6 +120,7 @@ public class FragmentCart extends Fragment {
                         button.setVisibility(View.GONE);
                         login.setVisibility(View.VISIBLE);
                         logintext.setVisibility(View.VISIBLE);
+
                        // Toast.makeText(mContext, R.string.sepet_gormek_icin, Toast.LENGTH_LONG).show();
                     }
 

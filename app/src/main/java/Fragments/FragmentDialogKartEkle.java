@@ -55,7 +55,7 @@ public class FragmentDialogKartEkle extends DialogFragment {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+               getFragmentManager().beginTransaction().replace(R.id.container,new FragmentCreditCards()).commit();
             }
         });
 

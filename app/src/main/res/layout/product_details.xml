@@ -66,17 +66,43 @@ android:orientation="vertical"
         android:layout_marginLeft="10dp"
         android:padding="10dp"
         />
-        <TextView
-            android:id="@+id/price"
-            android:drawableLeft="@drawable/ic_tag"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="100TL"
-            android:textSize="14sp"
-            android:textColor="#000"
-            android:layout_marginLeft="10dp"
-            android:padding="10dp"/>
-
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp">
+            <TextView
+                android:id="@+id/normalprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#000"
+                android:textStyle="normal"
+                android:text="100TL"
+               />
+            <TextView
+                android:id="@+id/disprice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#ed483f"
+                android:textStyle="normal"
+                android:text="100TL"/>
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:id="@+id/price"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12dp"
+                android:layout_marginTop="5dp"
+                android:textColor="#303030"
+                android:textStyle="normal"
+                android:background="@drawable/text_line"
+                android:text="100TL"/>
+        </LinearLayout>
 
     <RelativeLayout
 

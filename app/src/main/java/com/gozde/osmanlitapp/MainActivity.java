@@ -20,6 +20,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.onesignal.OneSignal;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.Locale;
@@ -47,6 +49,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
         preferences=this.getSharedPreferences("gg", Context.MODE_PRIVATE);
         String dil ="aaaa";
         dil=preferences.getString("dil","tr");
@@ -58,6 +64,7 @@ public class MainActivity extends AppCompatActivity {
             getBaseContext().getResources().updateConfiguration(config,
                     getBaseContext().getResources().getDisplayMetrics());}
         setContentView(R.layout.activity_main);
+
        /* ApiInterface apiInterface = ApiClient.getInstance(getApplicationContext()).getApi();
         Call<CartResponse> call=apiInterface.sepeturunler("Bearer " + SharedPrefManager.getInstance(getApplicationContext()).getToken(), "application/json");
         call.enqueue(new Callback<CartResponse>() {

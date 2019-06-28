@@ -38,7 +38,7 @@
             android:text="toplam"
             android:textSize="14sp"
             android:textStyle="bold"
-            android:textColor="#800020"
+            android:textColor="@color/blue"
             android:padding="10dp"/>
     </LinearLayout>
     <LinearLayout
@@ -50,7 +50,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:textColor="#800020"
+            android:textColor="@color/blue"
             android:text="@string/teslimat_adresi"/>
         <TextView
             android:id="@+id/telimadres"
@@ -63,7 +63,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
-            android:textColor="#800020"
+            android:textColor="@color/blue"
             android:text="@string/fat_adres"/>
         <TextView
             android:id="@+id/faturaadres"
